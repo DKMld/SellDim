@@ -1,11 +1,11 @@
 from django import forms
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 from Selldim.accounts.models import Accounts
 
 
-class AccountsForm(forms.ModelForm):
+class AccountsForm(UserCreationForm):
     class Meta:
-        model = Accounts
-        widgets = {
-            'password': forms.PasswordInput(),
-    }
+        model = User
+        fields = ['username', 'email', 'password1', 'password2']

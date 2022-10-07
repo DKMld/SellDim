@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+
+
+<head>
+	<title>Register</title>
+	<link rel="stylesheet" type="text/css" href={% static 'styles.css' %}>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+</head>
+
+
+<body>
+	<div class="main">
+		<input type="checkbox" id="chk" aria-hidden="true">
+
+			<div class="signup">
+
+				<form method="POST">
+                    {% csrf_token %}
+
+                    <label for="chk" aria-hidden="true">Sign up</label>
+                    {% for field in form %}
+                        {{ field }}
+                    {% endfor %}
+
+                    <input class="input_button" type="submit" name="submit button" value="Sign Up">
+				</form>
+
+			</div>
+
+
+
+			<div class="login">
+				<form>
+					<label for="chk" aria-hidden="true">Login</label>
+					<input type="email" name="email" placeholder="Username" required="">
+					<input type="password" name="pswd" placeholder="Password" required="">
+					<button>Login</button>
+				</form>
+			</div>
+	</div>
+    <script>
+        var form_fields = document.getElementsByTagName('input')
+        form_fields[2].placeholder='Username'
+        form_fields[3].placeholder='Email'
+        form_fields[4].placeholder='Password'
+        form_fields[5].placeholder='Confirm password'
+        console.log(form_fields)
+    </script>
+s
+</body>
+</html>
