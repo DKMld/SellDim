@@ -1,10 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
+
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
-<body>
 
+
+<body>
+{% block content %}
+
+
+<div class="nav--bar--div">
+    <nav class="nav--bar">
+
+        <a class="nav--bar--links" href="#">Home</a>
+        <a class="nav--bar--links" href="{% url 'register' %}">Register</a>
+        <a class="nav--bar--links" href="">About Us</a>
+        <a class="nav--bar--links" href="">Sell</a>
+    </nav>
+
+</div>
+
+
+{% endblock %}
 </body>
+
+
 </html>

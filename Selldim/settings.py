@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     'Selldim.accounts',
     'Selldim.products',
+    'Selldim.common',
 ]
 
 MIDDLEWARE = [

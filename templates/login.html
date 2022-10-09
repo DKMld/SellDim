@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'login_register_page.css' %}">
 </head>
 
 
@@ -18,8 +18,8 @@
                     {% csrf_token %}
 
                     <label for="chk" aria-hidden="true">Log In</label>
-                    <input type="text" class="input" >
-                    <input type="text" class="input" >
+                    <input type="text" class="input" name="username" >
+                    <input type="password" class="input" name="pswrd" >
 
                     <input class="input-button" type="submit" name="submit button" value="Log In">
                     <div class="p-tag-div">

@@ -25,18 +25,19 @@ def login_user(request):
 
     if request.method == 'POST':
         username = request.POST.get('username')
-        password = request.POST.get('pswd')
+        password = request.POST.get('pswrd')
         print(password)
         print(username)
 
         user = authenticate(request, username=username, password=password)
         print(user)
         if user is not None:
+            print('user is not none!!!!!')
             login(request, user)
             return render(request, 'index.html')
 
     context = {}
-    print(00000)
+
     return render(request, 'login.html')
 
 
