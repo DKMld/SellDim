@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+
+
+<body>
+    <div class="main">
+		<input type="checkbox" id="chk" aria-hidden="true">
+
+			<div class="signup">
+
+				<form method="POST">
+                    {% csrf_token %}
+
+                    <label for="chk" aria-hidden="true">Log In</label>
+                    <input type="text" class="input" >
+                    <input type="text" class="input" >
+
+                    <input class="input-button" type="submit" name="submit button" value="Log In">
+                    <div class="p-tag-div">
+                         <p class="p1-tag">Don't have an account? <a class="log-reg-link" href="{% url 'register' %}">Register</a></p>
+                    </div>
+
+				</form>
+
+            </div>
+    </div>
+
+
+
+</body>
+        <script>
+        var form_fields = document.getElementsByTagName('input')
+        form_fields[2].placeholder='Username'
+        form_fields[3].placeholder='Password'
+        </script>
+
+
+
+
+</html>

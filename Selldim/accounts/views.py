@@ -1,8 +1,10 @@
-from django.shortcuts import render
+from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.views.decorators.csrf import csrf_protect
 
 from Selldim.accounts.forms import AccountsForm
+
 
 @csrf_protect
 def register_user(request):
@@ -18,7 +20,27 @@ def register_user(request):
     }
     return render(request, 'register.html', context)
 
+
 def login_user(request):
+
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('pswd')
+        print(password)
+        print(username)
+
+        user = authenticate(request, username=username, password=password)
+        print(user)
+        if user is not None:
+            login(request, user)
+            return render(request, 'index.html')
+
+    context = {}
+    print(00000)
+    return render(request, 'login.html')
+
+
+def log_out_user(request):
     pass
 
 
