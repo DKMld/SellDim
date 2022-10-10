@@ -10,18 +10,22 @@ body{
 }
 .main{
 	width: 350px;
-	height: 500px;
+	height: 560px;
 	background: red;
 	overflow: hidden;
 	background: url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38") no-repeat center/ cover;
 	border-radius: 10px;
 	box-shadow: 5px 20px 50px #000;
+
+
+
 }
-#chk{
+#chk {
 	display: none;
 }
+
 .signup{
-	position: relative;
+	position: sticky;
 	width:100%;
 	height: 100%;
 }
@@ -106,10 +110,12 @@ button:hover{
 	transition: .2s ease-in;
 	cursor: pointer;
 }
-.form{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.forms{
+	position: sticky;
+	height: 560px;
+
+
+
 }
 
 .p-tag-div{
@@ -129,4 +135,10 @@ button:hover{
 .log-reg-link:hover{
 	color: white;
 	text-decoration-line: underline;
+}
+
+.flash--messages{
+	color: indianred;
+	padding-bottom: 10px;
+	position: sticky;
 }

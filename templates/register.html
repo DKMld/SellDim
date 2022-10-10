@@ -20,6 +20,15 @@
                     {% csrf_token %}
 
                     <label for="chk" aria-hidden="true">Sign up</label>
+
+                    {% if messages %}
+                        <ul class="messages">
+                        {% for message in messages %}
+                            <p class="flash--messages">{{ message }}</p>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+
                     {% for field in form %}
                         {{ field }}
                     {% endfor %}
@@ -30,10 +39,6 @@
 
 			</div>
 
-
-            {% for message in messages %}
-                <p>{{ message }}</p>
-            {% endfor %}
 
 	</div>
 

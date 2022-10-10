@@ -18,6 +18,15 @@
                     {% csrf_token %}
 
                     <label for="chk" aria-hidden="true">Log In</label>
+
+                    {% if messages %}
+                        <ul class="messages">
+                        {% for message in messages %}
+                            <p class="flash--messages">{{ message }}</p>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+
                     <input type="text" class="input" name="username" >
                     <input type="password" class="input" name="pswrd" >
 
@@ -25,6 +34,7 @@
                     <div class="p-tag-div">
                          <p class="p1-tag">Don't have an account? <a class="log-reg-link" href="{% url 'register' %}">Register</a></p>
                     </div>
+
 
 				</form>
 

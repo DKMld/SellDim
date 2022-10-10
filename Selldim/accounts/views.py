@@ -1,8 +1,9 @@
-from django.contrib.auth import authenticate, login
+from django.contrib import messages
+from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.views.decorators.csrf import csrf_protect
-
+import Selldim.common.views
 from Selldim.accounts.forms import AccountsForm
 
 
@@ -14,6 +15,8 @@ def register_user(request):
         form = AccountsForm(request.POST)
         if form.is_valid():
             form.save()
+            return render(request, 'index.html')
+        messages.error(request, 'Username is already taken!')
 
     context = {
         'form': form,
@@ -34,15 +37,19 @@ def login_user(request):
         if user is not None:
             print('user is not none!!!!!')
             login(request, user)
-            return render(request, 'index.html')
+            context = {'user': user}
+            return render(request, 'index_logged.html', context)
+        elif user is None:
+            messages.success(request, 'Username or password is incorrect!')
+            return render(request, 'login.html')
 
     context = {}
-
     return render(request, 'login.html')
 
 
 def log_out_user(request):
-    pass
+    logout(request)
+    return ...
 
 
 def delete_user(request):

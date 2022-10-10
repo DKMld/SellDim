@@ -1,5 +1,5 @@
 body{
-	display: flex;
+
 	min-height: 100vh;
 	font-family: 'Jost', sans-serif;
 	background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e);}
@@ -7,6 +7,9 @@ body{
 
 .nav--bar{
     padding: 30px;
+    width: 100%;
+    display: inline-flex;
+
 
 
 }
@@ -16,16 +19,12 @@ body{
     background-color: #573b8a;
     border-radius: 25px;
 
-	display: inline-grid;
+	display: inline;
     justify-content: center;
     align-items: center;
 
     height: 30px;
     width: 75px;
-
-
-
-
 
 
 }
