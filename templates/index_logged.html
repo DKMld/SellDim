@@ -15,17 +15,21 @@
 
 <body>
 {% block content %}
+
     <div class="nav--bar--div">
     <nav class="nav--bar">
 
         <a class="nav--bar--links" href="#">Home</a>
-        <a class="nav--bar--links" href="">Sell</a>
-        <a class="nav--bar--links" href="">About Us</a>
-        <p>{{ user }}</p>
-        <a href="">Log out!</a>
+        <a class="nav--bar--links" href="{% url 'sell' %}">Sell</a>
+        <a class="nav--bar--links" href="#">About Us</a>
+        <div class="username--logout--div">
+            <p class="user--username">{{ user }}</p>
+            <a class="nav--bar--links logout" href="{% url 'log out' %}">Log out!</a>
+        </div>
+
     </nav>
 
-</div>
+    </div>
 
 {% endblock %}
 </body>
