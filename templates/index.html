@@ -12,7 +12,6 @@
 <body>
 {% block content %}
 
-
 <div class="nav--bar--div">
     <nav class="nav--bar">
 
@@ -22,15 +21,15 @@
         <a class="nav--bar--links" href="{% url 'register' %}">Register</a>
         <a class="nav--bar--links" href="#">About Us</a>
 
-
-
     </nav>
 
 </div>
 
-
 {% endblock %}
-</body>
 
+{% block page %}
+{% endblock %}
+
+</body>
 
 </html>

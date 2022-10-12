@@ -1,10 +1,29 @@
+{% extends 'index_logged.html' %}
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
+
 <head>
     <meta charset="UTF-8">
     <title>Sell</title>
 </head>
+
 <body>
+{% block page %}
+<div>
+    <form method="POST" action="{% url 'sell' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% for field in form %}
+            {{ field }}
+        {% endfor %}
+        <input type="submit" value="Submit">
+
+        </form>
+    </div>
+{% endblock %}
+
 
 </body>
+
+
 </html>

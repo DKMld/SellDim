@@ -6,6 +6,6 @@ from Selldim.common import views
 urlpatterns = [
     path('', include([
         path('home/', views.home_page, name='home page'),
-        path('sell/', views.sell_product, name='sell'),
+        
     ]))
 ]
