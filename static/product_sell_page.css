@@ -2,11 +2,36 @@
     text-align: center;
 }
 
-.div--product--name{
+.product--image{
 
     --vh: 8px;
     -webkit-font-smoothing: antialiased;
     box-sizing: border-box;
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.div--product--image{
+
+    --vh: 7.54px;
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
     font-family: Geomanist,Arial,sans-serif;
-    max-width: 682px;
+    border-radius: 4px;
+    background: rgb(255, 251, 239);
+    width: 188px;
+    height: 141px;
+    padding: 0px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    position: relative;
 }

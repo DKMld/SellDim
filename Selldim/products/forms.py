@@ -1,6 +1,6 @@
 
 from django import forms
-from django.forms import ModelForm
+from django.forms import ModelForm, TextInput, FileField, ImageField
 
 from Selldim.products.models import Products
 
@@ -19,7 +19,7 @@ class ProductForm(ModelForm):
         ('other', 'Other'),
     ]
 
-    image = forms.ImageField(required=False)
+    file = forms.ImageField(required=False,)
     category = forms.ChoiceField(required=True, choices=CATEGORY_CHOICES)
 
     class Meta:
@@ -27,3 +27,17 @@ class ProductForm(ModelForm):
 
         fields = ['product_name', 'image', 'description', 'price']
 
+        widgets = {
+            'product_name': TextInput(
+                attrs={
+                    'class': 'product--name'}),
+
+            'image': forms.FileInput(
+                attrs={
+                    'class': 'product--image'}),
+
+            'description': TextInput(
+                attrs={
+                    'class': 'product--description'}),
+
+        }
