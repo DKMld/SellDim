@@ -6,20 +6,43 @@
 <head>
     <meta charset="UTF-8">
     <title>Sell</title>
+    <link rel="stylesheet" href="{% static 'product_sell_page.css' %}">
 </head>
 
 <body>
 {% block page %}
 <div>
-    <form method="POST" action="{% url 'sell' %}" enctype="multipart/form-data">
+    <form class="product--sell--form" method="POST" action="{% url 'sell' %}" enctype="multipart/form-data">
         {% csrf_token %}
-        {% for field in form %}
-            {{ field }}
-        {% endfor %}
+
+        <div class="div--product--name">
+            {{ form.product_name }}
+        </div>
+
+        <div class="div--product--category">
+            {{ form.category }}
+        </div>
+
+        <div class="div--product--image">
+            {{ form.image }}
+        </div>
+
+        <div class="div--product--description">
+            {{ form.description }}
+        </div>
+
+        <div class="div--product--price">
+            {{ form.price }}
+        </div>
+
+
         <input type="submit" value="Submit">
 
-        </form>
-    </div>
+    </form>
+</div>
+
+
+
 {% endblock %}
 
 

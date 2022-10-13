@@ -8,4 +8,5 @@ class Products(models.Model):
     description = models.TextField(null=True, max_length=300)
     price = models.FloatField(null=True, max_length=10)
     image = models.ImageField(null=True)
+    category = models.CharField(null=True, max_length=50)
 

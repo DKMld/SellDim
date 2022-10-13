@@ -1,0 +1,12 @@
+.product--sale--form{
+    text-align: center;
+}
+
+.div--product--name{
+
+    --vh: 8px;
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+    font-family: Geomanist,Arial,sans-serif;
+    max-width: 682px;
+}
