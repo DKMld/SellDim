@@ -12,7 +12,7 @@ def sell_product(request):
         if request.method == 'POST':
 
             form = ProductForm(request.POST, request.FILES)
-            print(request.FILES)
+
             if form.is_valid():
                 instance = form.save()
                 instance.creator = request.user
