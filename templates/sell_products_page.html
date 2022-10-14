@@ -9,6 +9,7 @@
     <title>Sell</title>
     <link rel="stylesheet" href="{% static 'styles.css' %}">
     <link rel="stylesheet" href="{% static 'product_sell_page.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     {% endblock %}
 
 
@@ -58,21 +59,46 @@
 
 
         <div class="div--product--description">
-            {{ form.description }}
+            <label for="id_description">Product description</label>
+            <div class="div--description">
+                {{ form.description }}
+                <div class="description--word--counter--div">
+                   <span id="total">Words: 0 / 1000 </span>
+                </div>
+
+
+            </div>
+
         </div>
+
+
 
         <div class="div--product--price">
+            <label style="display: flex" for="id_price">Price</label>
             {{ form.price }}
+            <p style="display: inline">BGN</p>
         </div>
 
+
+
         <div class="sale--page--input--button">
-           <input type="submit" value="Submit">
+           <input class="input--button" type="submit" value="Sell Me">
         </div>
 
 
     </form>
 </div>
 
+
+
+    <script>
+      function count()
+    {
+      var total=document.getElementById("id_description").value;
+      total=total.replace(/\s/g, '');
+      document.getElementById("total").innerHTML="Words: "+total.length+" / 1000";
+    }
+    </script>
 
 
 {% endblock %}

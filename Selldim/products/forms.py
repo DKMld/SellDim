@@ -22,23 +22,28 @@ class ProductForm(ModelForm):
         widgets = {
             'product_name': TextInput(
                 attrs={
-                    'class': 'product--name'}),
+                    'class': 'product--name',
+                }),
 
             'image': forms.FileInput(
                 attrs={
                     'class': 'product--image',
-                    'multiple': 'False'}),
+                    'multiple': 'False',
+                }),
 
-            'description': TextInput(
+            'description': forms.Textarea(
                 attrs={
-                    'class': 'product--description'}),
+                    'class': 'product--description',
+                    'onkeyup': "count();",
+                }),
 
             'category': Select(attrs={
-                'class': 'product--category'
-            }),
+                'class': 'product--category',
+                }),
 
             'price': NumberInput(attrs={
-                'class': 'product--price'
-            })
+                'class': 'product--price',
+                'min': '0',
+                })
 
         }
