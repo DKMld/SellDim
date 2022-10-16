@@ -10,12 +10,14 @@
     <meta charset="UTF-8">
     <title>Home</title>
     <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'add_style.css' %}">
     {% endblock %}
 </head>
 
 
+<body style="background-color: whitesmoke">
 
-<body>
+
 {% block content %}
     <div class="nav--bar--div">
     <nav class="nav--bar">
@@ -30,9 +32,33 @@
 
     </nav>
     </div>
+
 {% endblock %}
 
+
+
+
 {% block page %}
+    <div class="main--add--div">
+        {% for post in last_five_ads %}
+
+            <div class="newest--adds--div">
+                <div class="product--name--div">
+                   {{ post.product_name }}
+                </div>
+
+                <div class="product--image--div">
+                    <img src="{{ post.image.url }}" alt="" width="216px" height="156px">
+                </div>
+
+                <div class="product--price--div">
+                    Price: {{ post.price }} BGN
+                </div>
+            </div>
+
+        {% endfor %}
+    </div>
+
 {% endblock %}
 
 

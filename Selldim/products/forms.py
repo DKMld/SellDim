@@ -23,6 +23,7 @@ class ProductForm(ModelForm):
             'product_name': TextInput(
                 attrs={
                     'class': 'product--name',
+                    'placeholder': 'Example: Apple Iphone 14pro 256gb',
                 }),
 
             'image': forms.FileInput(
@@ -35,6 +36,7 @@ class ProductForm(ModelForm):
                 attrs={
                     'class': 'product--description',
                     'onkeyup': "count();",
+                    'placeholder': 'Write something that you think will convince someone to buy your product'
                 }),
 
             'category': Select(attrs={

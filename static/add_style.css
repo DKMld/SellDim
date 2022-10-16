@@ -1,0 +1,29 @@
+
+
+.main--add--div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.newest--adds-div{
+    padding: 10px;
+
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+
+}
+
+.product--name--div{
+    padding: 10px;
+
+}
+
+.product--image--div{
+    padding: 10px;
+}
+
+.product--price--div{
+    padding: 10px;
+}
