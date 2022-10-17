@@ -11,6 +11,8 @@ def home_page(request):
 
         context = {'last_five_ads': last_five_ads}
 
+        # context + 'user': request.user          # to add
+
         if request.user.is_authenticated:
             return render(request, 'index_logged.html', context)
         return render(request, 'index.html', context)

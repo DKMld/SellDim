@@ -1,5 +1,4 @@
 
-
 from django import forms
 from django.forms import ModelForm, TextInput, NumberInput, Select, ChoiceField
 
@@ -7,9 +6,6 @@ from Selldim.products.models import Products
 
 
 class ProductForm(ModelForm):
-
-
-
 
     class Meta:
         model = Products
@@ -31,6 +27,7 @@ class ProductForm(ModelForm):
                     'class': 'product--image',
                     'multiple': 'False',
                 }),
+
 
             'description': forms.Textarea(
                 attrs={

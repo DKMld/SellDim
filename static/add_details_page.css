@@ -1,0 +1,96 @@
+/*.h1--tag{*/
+
+/*    --vh: 8px;*/
+/*    -webkit-font-smoothing: antialiased;*/
+/*    box-sizing: border-box;*/
+/*    font-family: inherit;*/
+/*    letter-spacing: 1px;*/
+/*    color: #002F34;*/
+/*    font-size: 28px;*/
+/*    line-height: 24px;*/
+/*    font-weight: normal;*/
+/*    margin: 0 20px 0 0;*/
+/*}*/
+/*.h3--tag{*/
+/*    --vh: 8px;*/
+/*    -webkit-font-smoothing: antialiased;*/
+/*    box-sizing: border-box;*/
+/*    font-family: inherit;*/
+/*    letter-spacing: 1px;*/
+/*    color: #002F34;*/
+/*    font-size: 28px;*/
+/*    line-height: 24px;*/
+/*    font-weight: normal;*/
+/*    margin: 0 20px 0 0;*/
+/*}*/
+
+
+.main--add--details--div{
+
+}
+
+
+.image--div--main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+
+.image--div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+
+    width: 670px;
+    height: 570px;
+    border-radius: 25px;
+}
+
+.name--price--description--wrap--div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.name--price--description--div--main{
+
+    background-color: white;
+    padding: 10px;
+    border-radius: 25px;
+    margin: 20px;
+    width: 47%;
+}
+
+.name--price--div{
+    padding: 20px;
+    background-color: white;
+
+
+}
+
+.h3--description--tag{
+    padding: 10px 10px 0;
+    font-size: 28px;
+
+}
+.description--div{
+
+    --vh: 8px;
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+    font-family: Geomanist,Arial,sans-serif;
+    font-size: 16px;
+    color: #002F34;
+    line-height: 22px;
+
+    word-break: break-word;
+    word-wrap: break-word;
+    white-space: pre-line;
+
+    width: 530px;
+    padding: 0 10px 10px;
+
+}

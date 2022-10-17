@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django.db import models
+from django.template.defaultfilters import slugify
 
 CATEGORY_CHOICES = [
     ('electronics', 'Electronics'),
@@ -23,4 +24,13 @@ class Products(models.Model):
     price = models.FloatField(null=True, max_length=10)
     image = models.ImageField(null=True)
     category = models.CharField(null=True, max_length=50, choices=CATEGORY_CHOICES)
+
+    slug = models.SlugField(null=True, unique=True)
+
+    def save(self, *args, **kwargs):
+        super(Products, self).save(*args, **kwargs)
+        if not self.slug:
+            self.slug = slugify(self.category + '-' + self.product_name + '-' + str(self.id))
+            self.save()
+
 

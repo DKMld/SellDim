@@ -1,0 +1,52 @@
+{% extends 'index_logged.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block title %}
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'add_details_page.css' %}">
+    {% endblock %}
+</head>
+
+
+
+<body>
+    {% block page %}
+
+    <div class="main--add--details--div">
+
+
+        <div class="image--div--main">
+            <div class="image--div">
+                <img src="{{ product.image.url }}" width="580px" height="470px" alt="">
+            </div>
+        </div>
+
+        <div class="name--price--description--wrap--div">
+            <div class="name--price--description--div--main">
+            <div class="name--price--div">
+                <h1 class="h1--name--tag">{{ product.product_name }}</h1>
+                <h3 class="h3--price--tag">{{ product.price }} Bgn</h3>
+            </div>
+
+                <div class="description--div">
+                    <h3 class="h3--description--tag">Description</h3>
+                    {{ product.description }}
+                </div>
+
+        </div>
+        </div>
+    </div>
+
+
+
+    {% endblock %}
+</body>
+</html>
+
+
+
+

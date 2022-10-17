@@ -48,7 +48,8 @@
                 </div>
 
                 <div class="product--image--div">
-                    <img src="{{ post.image.url }}" alt="" width="216px" height="156px">
+                    <a class="a--tag--under--image" href="{% url 'product details' post.slug  %}"></a>
+                    <img  src="{{ post.image.url }}" alt="" width="216px" height="156px">
                 </div>
 
                 <div class="product--price--div">

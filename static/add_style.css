@@ -27,3 +27,9 @@
 .product--price--div{
     padding: 10px;
 }
+
+.a--tag--under--image{
+    width: 256px;
+    height: 156px;
+    position: absolute;
+}
