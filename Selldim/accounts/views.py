@@ -1,11 +1,9 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm
 from django.views.decorators.csrf import csrf_protect
 
 from Selldim.common.views import home_page
-
 from Selldim.accounts.forms import AccountsForm
 
 
@@ -17,7 +15,7 @@ def register_user(request):
         form = AccountsForm(request.POST)
         if form.is_valid():
             form.save()
-            return render(request, 'index.html')
+            return redirect('login')
         messages.error(request, 'Username is already taken!')
 
     context = {
@@ -26,6 +24,7 @@ def register_user(request):
     return render(request, 'register.html', context)
 
 
+@csrf_protect
 def login_user(request):
 
     if request.method == 'POST':
@@ -38,22 +37,24 @@ def login_user(request):
 
             login(request, user)
             context = {'user': user}
-            return render(request, 'index_logged.html', context)
+            return redirect('home page')
 
         elif user is None:
             messages.success(request, 'Username or password is incorrect!')
             return render(request, 'login.html')
 
     context = {}
-    return render(request, 'login.html')
+    return render(request, 'login.html', context)
 
 
+@csrf_protect
 def log_out_user(request):
     logout(request)
 
     return redirect(home_page)
 
 
+@csrf_protect
 def delete_user(request):
     pass
 

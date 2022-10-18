@@ -7,10 +7,10 @@
 
 <head>
     {% block title %}
-    <meta charset="UTF-8">
-    <title>Home</title>
-    <link rel="stylesheet" href="{% static 'styles.css' %}">
-    <link rel="stylesheet" href="{% static 'add_style.css' %}">
+        <meta charset="UTF-8">
+        <title>Home</title>
+        <link rel="stylesheet" href="{% static 'styles.css' %}">
+        <link rel="stylesheet" href="{% static 'add_style.css' %}">
     {% endblock %}
 </head>
 
@@ -25,11 +25,21 @@
         <a class="nav--bar--links" href="{% url 'home page' %}">Home</a>
         <a class="nav--bar--links" href="{% url 'sell' %}">Sell</a>
         <a class="nav--bar--links" href="#">About Us</a>
+
         <div class="username--logout--div">
             <p class="user--username">{{ user }}</p>
-            <a class="nav--bar--links logout" href="{% url 'log out' %}">Log out!</a>
-        </div>
 
+            <ul>
+                <li class="li--item"><a href="#" aria-haspopup="true">Profile</a>
+                  <ul class="dropdown" aria-label="submenu">
+                    <li class="li--item"><a class="a--item" href="#">Profile Details</a></li>
+                    <li class="li--item"><a class="a--item" href="#">My ads</a></li>
+                    <li class="li--item"><a class="a--item" href="{% url 'log out' %}">Log out</a></li>
+                  </ul>
+                </li>
+            </ul>
+
+        </div>
     </nav>
     </div>
 
@@ -39,7 +49,13 @@
 
 
 {% block page %}
-    <div class="main--add--div">
+    <div class="main--div">
+        <div class="add--group--name">
+            <h1>Most recent ads</h1>
+        </div>
+
+        <div class="main--add--div">
+
         {% for post in last_five_ads %}
 
             <div class="newest--adds--div">
@@ -59,6 +75,37 @@
 
         {% endfor %}
     </div>
+    </div>
+
+
+    <div class="main--div">
+        <div class="add--group--name">
+            <h1>Ads You may be interested in</h1>
+        </div>
+
+        <div class="main--add--div">
+
+        {% for post in last_five_ads %}
+
+            <div class="newest--adds--div">
+                <div class="product--name--div">
+                   {{ post.product_name }}
+                </div>
+
+                <div class="product--image--div">
+                    <a class="a--tag--under--image" href="{% url 'product details' post.slug  %}"></a>
+                    <img  src="{{ post.image.url }}" alt="" width="216px" height="156px">
+                </div>
+
+                <div class="product--price--div">
+                    Price: {{ post.price }} BGN
+                </div>
+            </div>
+
+        {% endfor %}
+    </div>
+    </div>
+
 
 {% endblock %}
 

@@ -1,9 +1,14 @@
-
+.main--div{
+    background-color: white;
+    margin: 10px;
+    border-radius: 25px;
+}
 
 .main--add--div{
     display: flex;
     justify-content: center;
     align-items: center;
+
 }
 
 .newest--adds-div{
@@ -17,19 +22,34 @@
 
 .product--name--div{
     padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
 
 }
 
 .product--image--div{
     padding: 10px;
+
 }
 
 .product--price--div{
     padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
 }
 
 .a--tag--under--image{
     width: 256px;
     height: 156px;
     position: absolute;
+}
+
+.add--group--name{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

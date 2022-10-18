@@ -2,7 +2,9 @@ body{
     margin: auto;
 	min-height: 100vh;
 	font-family: 'Jost', sans-serif;
-	background: whitesmoke;}
+	background: whitesmoke;
+
+}
 
 
 .nav--bar{
@@ -54,7 +56,9 @@ body{
     margin-top: 7px;
     border-radius: 25px;
     width: auto;
-    padding: 5px;
+    padding: 13px;
+    margin-bottom: 5px;
+
 }
 
 
@@ -62,3 +66,76 @@ body{
     padding-left: 65%;
     display: inline-flex;
 }
+
+
+
+
+
+
+/*profile button */
+
+ul {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+
+li {
+  color: #fff;
+  background: #573b8a;
+  display: block;
+  float: left;
+  padding: 13px;
+  position: relative;
+  text-decoration: none;
+  transition-duration: 0.5s;
+  border-radius: 25px;
+  margin: 10px;
+
+}
+
+li a {
+  color: #fff;
+  text-decoration: None;
+
+}
+
+li:hover,
+li:focus-within {
+  background: cadetblue;
+  cursor: pointer;
+
+}
+
+li:focus-within a {
+  outline: none;
+}
+
+ul li ul {
+
+  visibility: hidden;
+  opacity: 0;
+  min-width: 5rem;
+  position: absolute;
+  transition: all 0.5s ease;
+  margin-top: 1rem;
+  left: 0;
+  display: none;
+}
+
+ul li:hover > ul,
+ul li:focus-within > ul,
+ul li ul:hover,
+ul li ul:focus {
+   visibility: visible;
+   opacity: 1;
+   display: block;
+}
+
+ul li ul li {
+  clear: both;
+  width: 55%;
+  margin: 2px;
+}
+
+/*profile button end*/
