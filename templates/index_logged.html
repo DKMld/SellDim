@@ -78,40 +78,38 @@
     </div>
 
 
-    <div class="main--div">
-        <div class="add--group--name">
-            <h1>Ads You may be interested in</h1>
-        </div>
 
-        <div class="main--add--div">
 
+
+
+    <div class="main--add-section--div">
         {% for post in last_five_ads %}
+        <div class="main--add--section--inside--loop">
+            <ul class="unordered--list">
+                <li class="list--item">
+                    <div class="product--name--section">
+                        {{ post.product_name }}
+                    </div>
 
-            <div class="newest--adds--div">
-                <div class="product--name--div">
-                   {{ post.product_name }}
-                </div>
+                    <div class="product--image--section">
+                        <img  src="{{ post.image.url }}" alt="" width="216px" height="156px">
+                    </div>
 
-                <div class="product--image--div">
-                    <a class="a--tag--under--image" href="{% url 'product details' post.slug  %}"></a>
-                    <img  src="{{ post.image.url }}" alt="" width="216px" height="156px">
-                </div>
-
-                <div class="product--price--div">
-                    Price: {{ post.price }} BGN
-                </div>
-            </div>
-
+                    <div class="product--price--section">
+                        Price : {{ post.price }} Bgn
+                    </div>
+                </li>
+            </ul>
+        </div>
         {% endfor %}
     </div>
-    </div>
+
+
+
 
 
 {% endblock %}
 
-
-
 </body>
-
-
 </html>
+
