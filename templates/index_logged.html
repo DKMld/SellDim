@@ -49,67 +49,76 @@
 
 
 {% block page %}
-    <div class="main--div">
-        <div class="add--group--name">
-            <h1>Most recent ads</h1>
+{#First row of ads#}
+    <div class="card--div">
+        <div class="header--div">
+            <h1 class="header">New ads</h1>
         </div>
 
-        <div class="main--add--div">
 
-        {% for post in last_five_ads %}
+        <ul class="card--ul">
 
-            <div class="newest--adds--div">
-                <div class="product--name--div">
-                   {{ post.product_name }}
+            {% for post in last_four_ads %}
+
+            <li class="card--li">
+                <div class="li--image--div">
+                    <a class="image--a--tag" href="{% url 'product details' post.slug %}"></a>
+                    <img src="{{ post.image.url }}" alt="" width="216px" height="156px">
                 </div>
 
-                <div class="product--image--div">
-                    <a class="a--tag--under--image" href="{% url 'product details' post.slug  %}"></a>
-                    <img  src="{{ post.image.url }}" alt="" width="216px" height="156px">
+                <div class="li--name--div">
+                    <p style="font-size: 18px; color: #6d44b8" class="product--name">{{ post.product_name }}</p>
+
                 </div>
 
-                <div class="product--price--div">
-                    Price: {{ post.price }} BGN
+                <div class="li--price--div">
+                    <p style="font-size: 16px; color: #6d44b8" class="product--price">Price: {{ post.price }} Bgn</p>
                 </div>
-            </div>
 
-        {% endfor %}
+            </li>
+
+            {% endfor %}
+        </ul>
     </div>
-    </div>
+{#End of first row of ads#}
 
+{#    second row of ads #}
 
+    <div class="card--div">
 
-
-
-
-    <div class="main--add-section--div">
-        {% for post in last_five_ads %}
-        <div class="main--add--section--inside--loop">
-            <ul class="unordered--list">
-                <li class="list--item">
-                    <div class="product--name--section">
-                        {{ post.product_name }}
-                    </div>
-
-                    <div class="product--image--section">
-                        <img  src="{{ post.image.url }}" alt="" width="216px" height="156px">
-                    </div>
-
-                    <div class="product--price--section">
-                        Price : {{ post.price }} Bgn
-                    </div>
-                </li>
-            </ul>
+        <div class="header--div">
+            <h1 class="header"></h1>
         </div>
-        {% endfor %}
+
+        <ul class="card--ul">
+            {% for post in last_eight_ads %}
+
+            <li class="card--li">
+                <div class="li--image--div">
+                    <a class="image--a--tag" href="{% url 'product details' post.slug %}"></a>
+                    <img src="{{ post.image.url }}" alt="" width="216px" height="156px">
+                </div>
+
+                <div class="li--name--div">
+                    <p style="font-size: 16px; color: #6d44b8" class="product--name">{{ post.product_name }}</p>
+
+                </div>
+
+                <div class="li--price--div">
+                    <p style="font-size: 16px; color: #6d44b8" class="product--price">Price: {{ post.price }} Bgn</p>
+                </div>
+
+            </li>
+
+            {% endfor %}
+        </ul>
     </div>
 
 
 
 
-
+{#    end of second row of ads#}
 {% endblock %}
 
 </body>
 </html>
-

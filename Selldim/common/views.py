@@ -1,21 +1,16 @@
-import random
-
 from django.shortcuts import render, redirect
 from django.contrib import messages
-
 from Selldim.products.models import Products
 
 
 def home_page(request):
 
     if request.method == 'GET':
-        last_five_ads = Products.objects.filter().order_by('-id')[:4]
-        items = list(Products.objects.all())
-        random_items = random.sample(items, 5)
+        last_four_ads = Products.objects.filter().order_by('-id')[:8]
 
         context = {
-            'last_five_ads': last_five_ads,
-            'random_items': random_items,
+            'last_four_ads': last_four_ads[:4],
+            'last_eight_ads': last_four_ads[4::],
         }
 
         # context + 'user': request.user          # to add
