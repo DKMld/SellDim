@@ -115,4 +115,15 @@
     margin-bottom: auto;
 }
 
+.product--name{
+    word-break: break-word;
+    word-wrap: break-word;
+    white-space: pre-line;
+    max-height: 20px;
+    min-width: 20px;
+}
+.li--price--div{
+
+
+}
 /*End of add sections*/

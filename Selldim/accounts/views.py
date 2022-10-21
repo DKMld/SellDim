@@ -1,6 +1,8 @@
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.csrf import csrf_protect
 
 from Selldim.common.views import home_page
@@ -36,7 +38,7 @@ def login_user(request):
         if user is not None:
 
             login(request, user)
-            context = {'user': user}
+
             return redirect('home page')
 
         elif user is None:
@@ -48,6 +50,7 @@ def login_user(request):
 
 
 @csrf_protect
+@login_required
 def log_out_user(request):
     logout(request)
 
@@ -55,9 +58,32 @@ def log_out_user(request):
 
 
 @csrf_protect
+@login_required
 def delete_user(request):
     pass
 
 
+@login_required
+def user_ads(request, username):
+
+    if request.user.is_authenticated:
+
+        user = User.objects.filter(username=username)
+
+        context = {'user': user}
+
+        print(context)
+
+        return render(request, 'my_ads.html', context)
 
 
+@login_required
+def profile_details(request, username):
+    if request.user.is_authenticated:
+        user = User.objects.filter(username=username)
+
+        context = {'user': user}
+
+        print(context)
+
+        return render(request, 'profile_details.html', context)
