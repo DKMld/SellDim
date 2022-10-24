@@ -7,6 +7,7 @@ from django.views.decorators.csrf import csrf_protect
 
 from Selldim.common.views import home_page
 from Selldim.accounts.forms import AccountsForm
+from Selldim.products.models import Products
 
 
 @csrf_protect
@@ -45,7 +46,7 @@ def login_user(request):
             messages.success(request, 'Username or password is incorrect!')
             return render(request, 'login.html')
 
-    context = {}
+    context = {'user_is_auth': request.user.is_authenticated, }
     return render(request, 'login.html', context)
 
 
@@ -68,9 +69,13 @@ def user_ads(request, username):
 
     if request.user.is_authenticated:
 
-        user = User.objects.filter(username=username)
+        user = request.user
+        user_active_ads = Products.objects.filter(creator=user.pk)
 
-        context = {'user': user}
+        context = {'user': user,
+                   'user_active_ads': user_active_ads,
+                   'user_is_auth': request.user.is_authenticated,
+                   }
 
         print(context)
 

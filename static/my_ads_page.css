@@ -1,0 +1,39 @@
+.main__ads__div{
+    padding: 15px;
+}
+
+.ads__div{
+
+    --vh: 8px;
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+    font-family: Geomanist,Arial,sans-serif;
+    margin-top: 16px;
+    display: flex;
+    padding: 20px;
+    background-color: white;
+    border-radius: 25px;
+    width: 70%;
+
+}
+
+.ads__inner_div{
+
+    --vh: 8px;
+    -webkit-font-smoothing: antialiased;
+    box-sizing: border-box;
+    font-family: Geomanist,Arial,sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+.add__name__div{
+    margin-left: 18%;
+    font-size: 22px;
+}
+
+.add__price__div{
+    margin-left: 18%;
+    font-size: 20px;
+}
+

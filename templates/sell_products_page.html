@@ -1,22 +1,32 @@
-{% extends 'index_logged.html' %}
+{% extends 'index.html' %}
 <!DOCTYPE html>
 <html lang="en">
 {% load static %}
 
 <head>
-    {% block title %}
+    {% block head %}
     <meta charset="UTF-8">
     <title>Sell</title>
     <link rel="stylesheet" href="{% static 'styles.css' %}">
     <link rel="stylesheet" href="{% static 'product_sell_page.css' %}">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     {% endblock %}
-
-
 </head>
 
+
 <body>
-{% block page %}
+{% block content %}
+
+
+    {% if messages %}
+        <ul style="display: flex; justify-content: center; align-items: center" class="messages">
+        {% for message in messages %}
+            <p class="flash--messages">{{ message }}</p>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+
 <div>
     <form class="product--sell--form" method="POST" action="{% url 'sell' %}" enctype="multipart/form-data">
         {% csrf_token %}

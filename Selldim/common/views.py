@@ -12,13 +12,14 @@ def home_page(request):
         context = {
             'last_four_ads': last_four_ads[:4],
             'last_eight_ads': last_four_ads[4::],
-            'user': user
+            'user': user,
+            'user_is_auth': request.user.is_authenticated,
         }
 
         # context + 'user': request.user          # to add
 
-        if request.user.is_authenticated:
-            return render(request, 'index_logged.html', context)
+        # if request.user.is_authenticated:
+        #     return render(request, 'index_logged.html', context)
         return render(request, 'index.html', context)
 
 
