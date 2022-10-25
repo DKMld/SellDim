@@ -22,26 +22,28 @@
         {% for add in user_active_ads %}
 
             <div class="ads__div">
-                <div class="ads__inner__div">
-                    <img src="{{ add.image.url }}" alt="" width="216px" height="157px">
-                </div>
+                    <div class="ads__inner__div">
+                        <a class="image--a--tag" href="{% url 'product details' add.slug %}"></a>
+                        <img src="{{ add.image.url }}" alt="" width="216px" height="157px">
+                    </div>
 
-                <div class="add__name__div">
-                    {{ add.product_name }}
-                </div>
+                    <div class="add__name__div">
+                        {{ add.product_name }}
+                    </div>
 
-                <div class="add__price__div">
-                    {{ add.price }}
-                </div>
+                    <div class="add__price__div">
+                        {{ add.price }} BGN
+                    </div>
+            </div>
 
+            <div class="add--button--div">
+                <input class="my--ads--add--button" type="submit" value="Edit">
+                <input class="my--ads--add--button" type="submit" value="Delete">
 
-                <div class="add__buttons__div">
-{#                    <input type="submit">#}
-
-                </div>
 
             </div>
-        {% endfor %}
+
+            {% endfor %}
 
     </div>
 
