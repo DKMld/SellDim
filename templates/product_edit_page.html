@@ -1,0 +1,120 @@
+{% extends 'index.html' %}
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    {% block head %}
+    <meta charset="UTF-8">
+    <title>Sell</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'product_sell_page.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    {% endblock %}
+</head>
+
+
+<body>
+{% block content %}
+
+
+    {% if messages %}
+        <ul style="display: flex; justify-content: center; align-items: center" class="messages">
+        {% for message in messages %}
+            <p class="flash--messages">{{ message }}</p>
+        {% endfor %}
+        </ul>
+    {% endif %}
+
+
+<div>
+    <form class="product--sell--form" method="POST" action="{% url 'product edit' product.pk %}" enctype="multipart/form-data">
+        {% csrf_token %}
+
+
+        <div class="product--name--category--div">
+            <h4 class="product--main--tag">What are you selling?</h4>
+            <div class="label--product--name--div">
+                <label  for="id_product_name" class="css-ha5hu8">Name</label>
+                <div class="product--name--div">
+                    {{ form.product_name }}
+                </div>
+            </div>
+
+
+            <div class="label--product--category--div">
+                <label  for="id_category">Categories</label>
+                <div  class="product--category--div">
+                    <label class="category--label" for="id_category">Choose a category</label>
+                    {{ form.category }}
+                </div>
+            </div>
+
+
+        </div>
+
+
+        <div class="div--product--image">
+            <h4 class="product--main--tag">Photos</h4>
+            <div class="div--outer--image">
+                <p>Here you can add an image of the product you are selling!</p>
+                <div class="div--image">
+                    <p class="image--p--tag">Add an image</p>
+                   {{ form.image }}
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="div--product--description">
+            <label for="id_description">Product description</label>
+            <div class="div--description">
+                {{ form.description }}
+                <div class="description--word--counter--div">
+                   <span id="total">Words: 0 / 1000 </span>
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <div class="div--product--price">
+            <label style="display: flex" for="id_price">Price</label>
+            {{ form.price }}
+            <p style="display: inline">BGN</p>
+        </div>
+
+
+
+        <div class="sale--page--input--button">
+           <input class="input--button" type="submit" value="Apply Changes">
+        </div>
+
+
+    </form>
+</div>
+
+
+
+    <script>
+      function count()
+    {
+      var total=document.getElementById("id_description").value;
+      total=total.replace(/\s/g, '');
+      document.getElementById("total").innerHTML="Words: "+total.length+" / 1000";
+    }
+    </script>
+
+
+{% endblock %}
+
+
+</body>
+
+
+</html>

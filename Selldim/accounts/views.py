@@ -84,11 +84,12 @@ def user_ads(request, username):
 
 @login_required
 def profile_details(request, username):
-    if request.user.is_authenticated:
-        user = User.objects.filter(username=username)
+    # TODO profile details page
+    user = User.objects.filter(username=username)
 
-        context = {'user': user}
+    context = {
+        'user': request.user,
+        'user_is_auth': request.user.is_authenticated
+    }
 
-        print(context)
-
-        return render(request, 'profile_details.html', context)
+    return render(request, 'profile_details.html', context)

@@ -46,3 +46,11 @@ class ProductForm(ModelForm):
                 })
 
         }
+
+
+class EditProductForm(ProductForm):
+    pass
+
+
+class DeleteProductForm(ProductForm):
+    pass

@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
-from Selldim.products.forms import ProductForm
+from Selldim.products.forms import ProductForm, EditProductForm
 from Selldim.products.models import Products
 
 
@@ -56,3 +56,43 @@ def product_details(request, slug):
 
         messages.error(request, 'You must be logged in to see other people ads!')
         return render(request, 'login.html')
+
+
+@login_required
+def product_edit(request, pk):
+    product = Products.objects.filter(pk=pk).get()
+
+    if request.method == 'GET':
+        form = EditProductForm(instance=product)
+    else:
+        form = EditProductForm(request.POST, instance=product)
+
+        if form.is_valid():
+            form.save()
+            context = {
+                'user': request.user.username
+            }
+            return redirect('user ads', context)
+
+    context = {
+        'form': form,
+        'user_is_auth': request.user.is_authenticated,
+        'product': product,
+    }
+
+    return render(request, 'product_edit_page.html', context)
+
+
+def product_delete(request, pk):
+    product = get_object_or_404(Products, pk=pk)
+
+    if product:
+        product.delete()
+
+        context = {
+            'user': request.user.username
+        }
+
+        return redirect('user ads', context)
+
+    return render(request, 'my_ads.html')

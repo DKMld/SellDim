@@ -44,9 +44,9 @@
             <ul>
                 <li class="li--item"><a href="#" aria-haspopup="true">Profile</a>
                   <ul class="dropdown" aria-label="submenu">
-                    <li class="li--item"><a class="a--item" href="{% url 'profile details' user %}">Profile Details</a></li>
+                    <li class="li--item"><a class="a--item" href="{% url 'profile details' user.username %}">Profile Details</a></li>
 
-                    <li class="li--item"><a class="a--item" href="{% url 'user ads' user %}">My ads</a></li>
+                    <li class="li--item"><a class="a--item" href="{% url 'user ads' user.username %}">My ads</a></li>
                     <li class="li--item"><a class="a--item" href="{% url 'log out' %}">Log out</a></li>
                   </ul>
                 </li>

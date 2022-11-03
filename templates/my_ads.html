@@ -37,9 +37,8 @@
             </div>
 
             <div class="add--button--div">
-                <input class="my--ads--add--button" type="submit" value="Edit">
-                <input class="my--ads--add--button" type="submit" value="Delete">
-
+                <a class="my--ads--add--button" href="{% url 'product edit' add.pk %}">Edit</a>
+                <a class="my--ads--add--button" href="{% url 'product delete' add.pk %}">Delete</a>
 
             </div>
 
