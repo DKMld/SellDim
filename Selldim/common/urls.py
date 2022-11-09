@@ -5,7 +5,7 @@ from Selldim.common import views
 
 urlpatterns = [
     path('', include([
-        path('home/', views.home_page, name='home page'),
+        path('home/', views.HomePage.as_view(), name='home page'),
 
     ]))
 ]

@@ -1,12 +1,15 @@
+from django import views
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse_lazy
 from django.views.decorators.csrf import csrf_protect
 
-from Selldim.common.views import home_page
-from Selldim.accounts.forms import AccountsForm
+from django.views.generic import DeleteView
+
+from Selldim.accounts.forms import AccountsForm, AccountsEditForm
 from Selldim.products.models import Products
 
 
@@ -24,6 +27,7 @@ def register_user(request):
     context = {
         'form': form,
     }
+
     return render(request, 'register.html', context)
 
 
@@ -55,13 +59,16 @@ def login_user(request):
 def log_out_user(request):
     logout(request)
 
-    return redirect(home_page)
+    return redirect('home page')
 
 
-@csrf_protect
-@login_required
-def delete_user(request):
-    pass
+# @csrf_protect
+# @login_required
+# class ProfileDelete(DeleteView):
+#     template_name = 'profile_details.html'
+#     model = User
+#     success_url = reverse_lazy('index')
+
 
 
 @login_required
@@ -77,19 +84,24 @@ def user_ads(request, username):
                    'user_is_auth': request.user.is_authenticated,
                    }
 
-        print(context)
-
         return render(request, 'my_ads.html', context)
 
 
 @login_required
 def profile_details(request, username):
     # TODO profile details page
-    user = User.objects.filter(username=username)
+    # user = User.objects.filter(username=username).get()
+    user = request.user
+    form = AccountsEditForm(instance=user)
+    if request.method == 'POST':
+        form = AccountsEditForm(request.POST, instance=user)
+        if form.is_valid():
+            form.save()
 
     context = {
         'user': request.user,
-        'user_is_auth': request.user.is_authenticated
+        'user_is_auth': request.user.is_authenticated,
+        'form': form,
     }
 
     return render(request, 'profile_details.html', context)

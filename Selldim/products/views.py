@@ -1,8 +1,12 @@
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
+from django.utils.decorators import method_decorator
+from django.views.generic import CreateView
+
 from Selldim.products.forms import ProductForm, EditProductForm
 from Selldim.products.models import Products
+from django import views
 
 
 def sell_product(request):
@@ -15,8 +19,6 @@ def sell_product(request):
 
             form = ProductForm(request.POST, request.FILES)
             user_ads = Products.objects.filter(creator=request.user.pk)
-
-            print(user_ads.count())
 
             if user_ads.count() >= 5:
                 form = ProductForm()
@@ -32,21 +34,20 @@ def sell_product(request):
             "form": form,
             "user_is_auth": request.user.is_authenticated
         }
-
-        return render(request, 'sell_products_page.html', context)
+        messages.success(request, 'Add added successfully!')
+        return render(request , 'sell_products_page.html', context)
 
     messages.error(request, 'You must be logged in order to sell!')
     return redirect('login')
 
 
-@login_required
-def product_details(request, slug):
-
-    if request.method == 'GET':
-        product = get_object_or_404(Products, slug=slug)
+@method_decorator(login_required, name='dispatch')
+class ProductDetails(views.View):
+    def get(self, request, *args, **kwargs):
+        product = get_object_or_404(Products, slug=self.kwargs['slug'])
 
         context = {
-            'slug': slug,
+            'slug': self.kwargs['slug'],
             'product': product,
             'user_is_auth': request.user.is_authenticated,
         }
@@ -58,13 +59,23 @@ def product_details(request, slug):
         return render(request, 'login.html')
 
 
-@login_required
-def product_edit(request, pk):
-    product = Products.objects.filter(pk=pk).get()
+@method_decorator(login_required, name='dispatch')
+class ProductEdit(views.View):
 
-    if request.method == 'GET':
+    def get(self, request, *args, **kwargs):
+        product = Products.objects.filter(pk=self.kwargs['pk']).get()
         form = EditProductForm(instance=product)
-    else:
+
+        context = {
+            'form': form,
+            'user_is_auth': request.user.is_authenticated,
+            'product': product,
+        }
+
+        return render(request, 'product_edit_page.html', context)
+
+    def post(self, request, *args, **kwargs):
+        product = Products.objects.filter(pk=self.kwargs['pk']).get()
         form = EditProductForm(request.POST, instance=product)
 
         if form.is_valid():
@@ -74,25 +85,20 @@ def product_edit(request, pk):
             }
             return redirect('user ads', context)
 
-    context = {
-        'form': form,
-        'user_is_auth': request.user.is_authenticated,
-        'product': product,
-    }
 
-    return render(request, 'product_edit_page.html', context)
+@method_decorator(login_required, name='dispatch')
+class ProductDelete(views.View):
 
+    def get(self, request, *args, **kwargs):
+        product = get_object_or_404(Products, pk=self.kwargs['pk'])
 
-def product_delete(request, pk):
-    product = get_object_or_404(Products, pk=pk)
+        if product:
+            product.delete()
 
-    if product:
-        product.delete()
+            context = {
+                'user': request.user.username
+            }
 
-        context = {
-            'user': request.user.username
-        }
+            return redirect('user ads', context)
 
-        return redirect('user ads', context)
-
-    return render(request, 'my_ads.html')
+        return render(request, 'my_ads.html')

@@ -1,13 +1,15 @@
 {% extends 'index.html' %}
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
-{% load static %}
+
 
 <head>
     {% block head %}
     <meta charset="UTF-8">
     <title>Sell</title>
-    <link rel="stylesheet" href="{% static 'styles.css' %}">
+        <link rel="stylesheet" href="{% static 'styles.css' %}">
     <link rel="stylesheet" href="{% static 'product_sell_page.css' %}">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
     {% endblock %}
