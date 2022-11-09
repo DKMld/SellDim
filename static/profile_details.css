@@ -21,9 +21,9 @@ body{
 }
 
 .signup{
-	position: sticky;
-	width:100%;
-	height: 100%;
+
+	width:80%;
+	height: 80%;
 }
 label{
 	color: #6d44b8;;
@@ -107,8 +107,8 @@ button:hover{
 	cursor: pointer;
 }
 .forms{
-	position: sticky;
-	height: 560px;
+	margin-left: 25%;
+	height: 400px;
 
 
 
