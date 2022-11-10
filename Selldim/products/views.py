@@ -2,8 +2,6 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.decorators import method_decorator
-from django.views.generic import CreateView
-
 from Selldim.common.models import ProductLikes
 from Selldim.products.forms import ProductForm, EditProductForm
 from Selldim.products.models import Products

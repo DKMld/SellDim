@@ -10,6 +10,7 @@ from django.views.decorators.csrf import csrf_protect
 from django.views.generic import DeleteView
 
 from Selldim.accounts.forms import AccountsForm, AccountsEditForm
+from Selldim.common.models import ProductLikes
 from Selldim.products.models import Products
 
 
@@ -104,3 +105,18 @@ def profile_details(request, username):
     }
 
     return render(request, 'profile_details.html', context)
+
+
+def favourite_ads_user(request, username):
+    user = request.user
+    user_favourite_ads = ProductLikes.objects.filter(user=user.pk)
+
+    print(user_favourite_ads)
+
+    context = {
+        'user': user,
+        'user_is_auth': request.user.is_authenticated,
+        'user_favourite_ads': user_favourite_ads,
+    }
+
+    return render(request, 'my_favourite_ads.html', context)

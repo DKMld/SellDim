@@ -1,6 +1,5 @@
 from django.urls import path
 from django.urls import include
-
 from Selldim.accounts import views
 from Selldim.common import views as common_views
 
@@ -14,6 +13,7 @@ urlpatterns = [
     ])),
     path('profile/<username>/', include([
             path('my_ads/', views.user_ads, name='user ads'),
+            path('my_favourite_ads/', views.favourite_ads_user, name='user favourite ads'),
             path('profile_details/', views.profile_details, name='profile details'),
     ]))
 

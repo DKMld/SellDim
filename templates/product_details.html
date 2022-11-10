@@ -27,19 +27,11 @@
         </div>
 
         <div class="name--price--description--wrap--div">
+
             <div class="name--price--description--div--main">
             <div class="name--price--div">
-                <h1 class="h1--name--tag">{{ product.product_name }}</h1>
-                <h3 class="h3--price--tag">{{ product.price|floatformat:2 }} Bgn</h3>
-            </div>
-
-                <div class="description--div">
-                    <h3 class="h3--description--tag">Description</h3>
-                    {{ product.description }}
-                </div>
-
                 {% if user_is_auth %}
-                <span class="heart">
+                <span class="heart" style="padding: 95%">
                     <a href="{% url 'product like' product.id %}">
                         {% if product_liked_by_user %}
                             <svg style="color: red"
@@ -84,6 +76,15 @@
                     </a>
                 </span>
                 {% endif %}
+                <h1 class="h1--name--tag">{{ product.product_name }}</h1>
+                <h3 class="h3--price--tag">{{ product.price|floatformat:2 }} Bgn</h3>
+            </div>
+
+                <div class="description--div">
+                    <h3 class="h3--description--tag">Description</h3>
+                    {{ product.description }}
+                </div>
+
 
         </div>
         </div>

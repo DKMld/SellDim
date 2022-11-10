@@ -1,0 +1,57 @@
+{% extends 'index.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% block head %}
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'my_ads_page.css' %}">
+    {% endblock %}
+</head>
+
+
+
+<body>
+{% block content %}
+
+    <div class="main__ads__div">
+        {% for add in user_favourite_ads %}
+
+            <div class="ads__div">
+                    <div class="ads__inner__div">
+                        <a class="image--a--tag" href="{% url 'product details' add.product.slug %}"></a>
+                        <img src="{{ add.product.image.url }}" alt="" width="216px" height="157px">
+                    </div>
+
+                    <div class="add__name__div">
+                        {{ add.product.product_name }}
+                    </div>
+
+                    <div class="add__price__div">
+                        {{ add.product.price|floatformat:2 }} BGN
+                    </div>
+
+                    </div>
+
+                {% if add.user == add.product.creator %}
+                <div class="add--button--div">
+                    <a class="my--ads--add--button" href="{% url 'product edit' add.product.pk %}">Edit</a>
+                    <a class="my--ads--add--button" href="{% url 'product delete' add.product.pk %}">Delete</a>
+                </div>
+                {% endif %}
+
+            </div>
+
+        {% endfor %}
+    </div>
+
+{% endblock %}
+
+</body>
+
+
+</html>
