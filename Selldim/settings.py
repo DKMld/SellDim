@@ -147,3 +147,8 @@ CACHES = {
 
 
 
+#TODO | Search bar!
+#TODO | Message between users
+#TODO | Like button (adding to favourites)
+#TODO | User Profile Picture
+#TODO | Images to show while creating an new add

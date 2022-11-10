@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.decorators import method_decorator
 from django.views.generic import CreateView
 
+from Selldim.common.models import ProductLikes
 from Selldim.products.forms import ProductForm, EditProductForm
 from Selldim.products.models import Products
 from django import views
@@ -41,22 +42,24 @@ def sell_product(request):
     return redirect('login')
 
 
-@method_decorator(login_required, name='dispatch')
+# @method_decorator(login_required, name='dispatch')
 class ProductDetails(views.View):
     def get(self, request, *args, **kwargs):
+
         product = get_object_or_404(Products, slug=self.kwargs['slug'])
+        product_liked_by_user = None
+
+        if request.user.is_authenticated:
+            product_liked_by_user = ProductLikes.objects.filter(product=product, user=request.user)
 
         context = {
             'slug': self.kwargs['slug'],
             'product': product,
             'user_is_auth': request.user.is_authenticated,
+            'product_liked_by_user': product_liked_by_user,
         }
 
-        if request.user.is_authenticated:
-            return render(request, 'product_details.html', context)
-
-        messages.error(request, 'You must be logged in to see other people ads!')
-        return render(request, 'login.html')
+        return render(request, 'product_details.html', context)
 
 
 @method_decorator(login_required, name='dispatch')

@@ -89,17 +89,16 @@ def user_ads(request, username):
 
 @login_required
 def profile_details(request, username):
-    # TODO profile details page
-    # user = User.objects.filter(username=username).get()
-    user = request.user
+    user = User.objects.filter(username=username).get()
     form = AccountsEditForm(instance=user)
+
     if request.method == 'POST':
         form = AccountsEditForm(request.POST, instance=user)
         if form.is_valid():
             form.save()
 
     context = {
-        'user': request.user,
+        'user': user,
         'user_is_auth': request.user.is_authenticated,
         'form': form,
     }

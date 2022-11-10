@@ -40,7 +40,7 @@
         <a class="nav--bar--links" href="#">About Us</a>
 
         <div class="username--logout--div">
-            <p class="user--username">{{ user.username }}</p>
+            <a href="{% url 'profile details' user.username %}" class="user--username">{{ user.username }}</a>
 
             <ul>
                 <li class="li--item"><a href="#" aria-haspopup="true">Profile</a>
@@ -85,7 +85,7 @@
                 </div>
 
                 <div class="li--price--div">
-                    <p style="font-size: 16px; color: #6d44b8" class="product--price">Price: {{ post.price }} Bgn</p>
+                    <p style="font-size: 16px; color: #6d44b8" class="product--price">Price: {{ post.price|floatformat:2 }} Bgn</p>
                 </div>
 
             </li>
@@ -129,8 +129,6 @@
 
 {#    end of second row of ads#}
 {% endblock %}
-
-
 
 
 </body>

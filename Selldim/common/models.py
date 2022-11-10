@@ -1,3 +1,8 @@
 from django.db import models
+from django.contrib.auth.models import User
+from Selldim.products.models import Products
 
-# Create your models here.
+
+class ProductLikes(models.Model):
+    product = models.ForeignKey(Products, on_delete=models.RESTRICT, null=False, blank=False)
+    user = models.ForeignKey(User, on_delete=models.RESTRICT)
