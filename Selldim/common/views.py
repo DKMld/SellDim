@@ -1,18 +1,19 @@
 from django import views
 from django.shortcuts import render, redirect
 
+from Selldim.common.forms import ProductSearchForm
 from Selldim.common.models import ProductLikes
 from Selldim.products.models import Products
 
 
 class HomePage(views.View):
     def get(self, request):
-        last_four_ads = Products.objects.filter().order_by('-id')[:8]
+        products = Products.objects.filter().order_by('-id').all()
         user = request.user
 
         context = {
-            'last_four_ads': last_four_ads[:4],
-            'last_eight_ads': last_four_ads[4::],
+            'last_four_ads': products[:4],
+            'last_eight_ads': products[4::],
             'user': user,
             'user_is_auth': request.user.is_authenticated,
         }
@@ -37,3 +38,23 @@ def product_like(request, pk):
 
 def get_photo_url(request, product_id):
     return request.META['HTTP_REFERER'] + f'#photo-{product_id}'
+
+
+
+def product_search(request):
+    if request.method == 'GET':
+        products = Products.objects.filter().order_by('-id').all()
+        search_form = ProductSearchForm(request.GET)
+        search_pattern = None
+        if search_form.is_valid():
+            search_pattern = request.GET.get('search')
+
+        if search_pattern:
+            products = products.filter(product_name__icontains=search_pattern)
+
+        context = {
+            'user_is_auth': request.user.is_authenticated,
+            'products': products
+        }
+
+        return render(request, 'product_search_page.html', context)

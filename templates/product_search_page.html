@@ -1,0 +1,76 @@
+{% extends 'index.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block head %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'add_style.css' %}">
+    <link rel="stylesheet" href="{% static 'search_bar.css' %}">
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+    {% endblock %}
+</head>
+
+
+
+<body>
+{% block content %}
+{# search bar#}
+  <div id="cover">
+  <form method="get" action="{% url 'product search' %}">
+    {% csrf_token %}
+    <div class="tb">
+      <div class="td"><input name="search" type="text" placeholder="Search" required class="search--bar--input"></div>
+      <div class="td" id="s-cover">
+        <button type="submit">
+          <div id="s-circle"></div>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+{# search bar end#}
+
+
+
+<div class="card--div">
+
+        <div class="header--div">
+            <h1 class="header"></h1>
+        </div>
+
+        <ul class="card--ul">
+            {% for product in products %}
+
+            <li class="card--li">
+                <div class="li--image--div">
+                    <a class="image--a--tag" href="{% url 'product details' product.slug %}"></a>
+                    <img src="{{ product.image.url }}" alt="" width="216px" height="156px">
+                </div>
+
+                <div class="li--name--div">
+                    <p style="font-size: 16px; color: #6d44b8" class="product--name">{{ product.product_name }}</p>
+
+                </div>
+
+                <div class="li--price--div">
+                    <p style="font-size: 16px; color: #6d44b8" class="product--price">Price: {{ product.price|floatformat:2 }} Bgn</p>
+                </div>
+
+            </li>
+
+            {% endfor %}
+        </ul>
+    </div>
+
+
+{% endblock %}
+</body>
+
+
+
+</html>

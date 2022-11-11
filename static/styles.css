@@ -31,6 +31,7 @@ body{
     width: 75px;
 
     text-decoration: None;
+    margin-top: 15px;
 }
 
 
@@ -80,14 +81,13 @@ body{
 }
 
 
-
 /*profile button */
-
 ul {
   list-style: none;
   margin: 0;
   padding-left: 0;
 }
+
 
 li {
   color: #fff;
@@ -103,11 +103,13 @@ li {
 
 }
 
+
 li a {
   color: #fff;
   text-decoration: None;
 
 }
+
 
 li:hover,
 li:focus-within {
@@ -116,9 +118,11 @@ li:focus-within {
 
 }
 
+
 li:focus-within a {
   outline: none;
 }
+
 
 ul li ul {
 
@@ -132,6 +136,7 @@ ul li ul {
   display: none;
 }
 
+
 ul li:hover > ul,
 ul li:focus-within > ul,
 ul li ul:hover,
@@ -141,10 +146,10 @@ ul li ul:focus {
    display: block;
 }
 
+
 ul li ul li {
   clear: both;
   width: 55%;
   margin: 2px;
 }
 
-/*profile button end*/

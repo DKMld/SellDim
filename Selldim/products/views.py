@@ -34,7 +34,7 @@ def sell_product(request):
             "user_is_auth": request.user.is_authenticated
         }
         messages.success(request, 'Add added successfully!')
-        return render(request , 'sell_products_page.html', context)
+        return render(request, 'sell_products_page.html', context)
 
     messages.error(request, 'You must be logged in order to sell!')
     return redirect('login')

@@ -1,7 +1,5 @@
-
 from django import forms
-from django.forms import ModelForm, TextInput, NumberInput, Select, ChoiceField
-
+from django.forms import ModelForm, TextInput, NumberInput, Select
 from Selldim.products.models import Products
 
 
@@ -44,7 +42,6 @@ class ProductForm(ModelForm):
                 'class': 'product--price',
                 'min': '0',
                 })
-
         }
 
 

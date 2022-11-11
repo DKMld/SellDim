@@ -9,7 +9,8 @@ from django.views.decorators.csrf import csrf_protect
 
 from django.views.generic import DeleteView
 
-from Selldim.accounts.forms import AccountsForm, AccountsEditForm
+from Selldim.accounts.forms import AccountsForm, AccountsEditForm, AddProfilePicture
+from Selldim.accounts.models import ProfilePicture
 from Selldim.common.models import ProductLikes
 from Selldim.products.models import Products
 
@@ -95,13 +96,15 @@ def profile_details(request, username):
 
     if request.method == 'POST':
         form = AccountsEditForm(request.POST, instance=user)
-        if form.is_valid():
+
+        if form.is_valid().is_valid():
             form.save()
 
     context = {
         'user': user,
         'user_is_auth': request.user.is_authenticated,
         'form': form,
+
     }
 
     return render(request, 'profile_details.html', context)

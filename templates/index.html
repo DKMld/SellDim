@@ -10,6 +10,7 @@
     <title>Home</title>
     <link rel="stylesheet" href="{% static 'styles.css' %}">
     <link rel="stylesheet" href="{% static 'add_style.css' %}">
+    <link rel="stylesheet" href="{% static 'search_bar.css' %}">
     {% endblock %}
 </head>
 
@@ -82,9 +83,27 @@
 {% endif %}
 
 
-
 {% block content %}
+
+{# search bar#}
+  <div id="cover">
+  <form method="get" action="{% url 'product search' %}">
+    {% csrf_token %}
+    <div class="tb">
+      <div class="td"><input name="search" type="text" placeholder="Search" required class="search--bar--input"></div>
+      <div class="td" id="s-cover">
+        <button type="submit">
+          <div id="s-circle"></div>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+{# search bar end#}
+
     {#First row of ads#}
+
     <div class="card--div">
         <div class="header--div">
             <h1 class="header">New ads</h1>

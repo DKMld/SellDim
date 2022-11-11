@@ -138,3 +138,11 @@ button:hover{
 	padding-bottom: 10px;
 	position: sticky;
 }
+
+
+.user--profile--wrap{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+}

@@ -22,10 +22,17 @@
 		<input type="checkbox" id="chk" aria-hidden="true">
 			<div class="signup">
 
-				<form class="forms" method="POST" action="{% url 'profile details' user.username %}">
+				<form class="forms" method="POST" action="{% url 'profile details' user.username %}" enctype="multipart/form-data">
                     {% csrf_token %}
 
                     <label for="chk" aria-hidden="true">{{ user.username}}`s Profile</label>
+
+{#                    <div class="user--profile--wrap">#}
+{#                        <div class="user--profile--div">#}
+{#                            {{ user_picture_form. }}#}
+{#                            <img src="{{ user_profile_picture.user_picture.url }}" width="200px" height="200px">#}
+{#                        </div>#}
+{#                    </div>#}
 
                     {% if messages %}
                         <ul class="messages">
@@ -34,6 +41,7 @@
                         {% endfor %}
                         </ul>
                     {% endif %}
+
                     {{ form.username }}
                     {{ form.email }}
                     {{ form.first_name }}
