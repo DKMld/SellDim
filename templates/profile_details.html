@@ -10,6 +10,8 @@
         <title>Sell</title>
         <link rel="stylesheet" href="{% static 'styles.css' %}">
         <link rel="stylesheet" href="{% static 'profile_details.css' %}">
+        <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
 
     {% endblock %}
 </head>
@@ -18,49 +20,86 @@
 <body>
 
 {% block content %}
+
 <div class="main">
 		<input type="checkbox" id="chk" aria-hidden="true">
+
 			<div class="signup">
+            {% if messages %}
+                <ul class="messages">
+                    {% for message in messages %}
+                        <p class="flash--messages">{{ message }}</p>
+                    {% endfor %}
+                </ul>
+            {% endif %}
 
 				<form class="forms" method="POST" action="{% url 'profile details' user.username %}" enctype="multipart/form-data">
                     {% csrf_token %}
 
-                    <label for="chk" aria-hidden="true">{{ user.username}}`s Profile</label>
+                <label style="margin: 20px" for="chk" aria-hidden="true">{{ user.username}}`s Profile</label>
 
-{#                    <div class="user--profile--wrap">#}
-{#                        <div class="user--profile--div">#}
-{#                            {{ user_picture_form. }}#}
-{#                            <img src="{{ user_profile_picture.user_picture.url }}" width="200px" height="200px">#}
-{#                        </div>#}
-{#                    </div>#}
 
-                    {% if messages %}
-                        <ul class="messages">
-                        {% for message in messages %}
-                            <p class="flash--messages">{{ message }}</p>
-                        {% endfor %}
-                        </ul>
-                    {% endif %}
 
+                <h3 style="display: flex; justify-content: center; align-items: center">Profile Details</h3>
                     {{ form.username }}
                     {{ form.email }}
                     {{ form.first_name }}
                     {{ form.last_name }}
-                    <p style="margin-left: 190px">In order to complete the changes please type your password and confirm it!</p>
-                    {{ form.password1 }}
-                    {{ form.password2 }}
+{#                  <p >In order to complete the changes please type your password and confirm it!</p>#}
+
                     <input class="input-button" type="submit" name="submit button" value="Edit Profile">
 
 
 				</form>
 
 
+                <form class="forms" method="POST" action="{% url 'profile details' user.username %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+
+                      {% for field in form_picture %}
+
+
+                    {% if user_picture %}
+                          {{ field }}
+
+                    <div class="profile--picture--div">
+                        <img style="position: absolute; width: 200px; height: 200px; border-radius: 45px;" id="blah" src="#" alt=""/>
+                        <img  src="{{ user_picture.user_picture.url }}" alt="" width="200px" height="200px" style="border-radius: 45px">
+                    </div>
+
+                    {% else %}
+                        <div class="profile--picture--div">
+                            {{ field }}
+                            <img style="position: absolute; width: 200px; height: 200px; border-radius: 45px;" id="blah" src="#" alt=""/>
+                            <img  src="https://st3.depositphotos.com/4111759/13425/v/450/depositphotos_134255710-stock-illustration-avatar-vector-male-profile-gray.jpg" alt="" width="200px" height="200px" style="border-radius: 45px">
+                        </div>
+                    {% endif %}
+                          
+                    <input class="input-button" style="width: 200px; height: 30px; padding: 0px" type="submit" value="Save picture">
+                      {% endfor %}
+                </form>
 			</div>
 
 
 	</div>
 
 
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result)
+                        .width(200)
+                        .height(200);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
 
     <script>
         var form_fields = document.getElementsByTagName('input')
@@ -68,8 +107,7 @@
         form_fields[3].placeholder='Email'
         form_fields[4].placeholder='First Name'
         form_fields[5].placeholder='Last Name'
-        form_fields[6].placeholder='Password'
-        form_fields[7].placeholder='Confirm Password'
+
     </script>
 
 </body>

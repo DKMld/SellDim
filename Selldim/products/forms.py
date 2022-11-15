@@ -24,6 +24,7 @@ class ProductForm(ModelForm):
                 attrs={
                     'class': 'product--image',
                     'multiple': 'False',
+                    'onchange': 'readURL(this);'
                 }),
 
 

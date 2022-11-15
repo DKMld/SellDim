@@ -33,12 +33,11 @@ def product_like(request, pk):
     else:
         ProductLikes.objects.filter(user=user, product=product).delete()
 
-    return redirect(get_photo_url(request, product_id=product.pk))
+    return redirect(get_product_url(request, product_id=product.pk))
 
 
-def get_photo_url(request, product_id):
+def get_product_url(request, product_id):
     return request.META['HTTP_REFERER'] + f'#photo-{product_id}'
-
 
 
 def product_search(request):
@@ -46,6 +45,7 @@ def product_search(request):
         products = Products.objects.filter().order_by('-id').all()
         search_form = ProductSearchForm(request.GET)
         search_pattern = None
+
         if search_form.is_valid():
             search_pattern = request.GET.get('search')
 

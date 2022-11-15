@@ -9,9 +9,11 @@
     {% block head %}
     <meta charset="UTF-8">
     <title>Sell</title>
-        <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
     <link rel="stylesheet" href="{% static 'product_sell_page.css' %}">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
     {% endblock %}
 </head>
 
@@ -58,16 +60,25 @@
 
         <div class="div--product--image">
             <h4 class="product--main--tag">Photos</h4>
+
             <div class="div--outer--image">
                 <p>Here you can add an image of the product you are selling!</p>
-                <div class="div--image">
-                    <p class="image--p--tag">Add an image</p>
-                   {{ form.image }}
+                <div style="display: inline-flex">
+                    <div class="div--image">
+                        <p class="image--p--tag">Add an image</p>
+                       {{ form.image }}
+                    </div>
+                    <div class="pre--upload--image--div" style="margin-left: 30px">
+                        <svg  xmlns="http://www.w3.org/2000/svg" width="24" height="22" viewBox="0 0 33 32" data-testid="add-icon"><path fill="#406367" fill-rule="evenodd" d="M21.43 4l1.325 4h5.67l1.325 1.333v17.334L28.425 28H4.575L3.25 26.667V9.333L4.575 8h5.67l1.325-4h9.86zm-1.91 2.667h-6.04l-1.325 4H5.9v14.666h21.2V10.667h-6.255l-1.325-4zm-3.02 4c3.653 0 6.625 2.99 6.625 6.666S20.153 24 16.5 24s-6.625-2.99-6.625-6.667c0-3.676 2.972-6.666 6.625-6.666zm0 2.666c-2.192 0-3.975 1.794-3.975 4s1.783 4 3.975 4 3.975-1.794 3.975-4-1.783-4-3.975-4z"></path></svg>
+                        <img style="position: absolute;" id="blah" src="#" alt="" />
+                    </div>
                 </div>
+
+            </div>
+            <div>
+
             </div>
         </div>
-
-
 
 
         <div class="div--product--description">
@@ -102,6 +113,21 @@
 </div>
 
 
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result)
+                        .width(188)
+                        .height(141);
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
 
     <script>
       function count()
@@ -111,6 +137,7 @@
       document.getElementById("total").innerHTML="Words: "+total.length+" / 1000";
     }
     </script>
+
 
 
 {% endblock %}

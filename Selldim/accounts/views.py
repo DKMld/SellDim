@@ -1,14 +1,9 @@
-from django import views
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect, get_object_or_404
-from django.urls import reverse_lazy
 from django.views.decorators.csrf import csrf_protect
-
-from django.views.generic import DeleteView
-
 from Selldim.accounts.forms import AccountsForm, AccountsEditForm, AddProfilePicture
 from Selldim.accounts.models import ProfilePicture
 from Selldim.common.models import ProductLikes
@@ -35,7 +30,6 @@ def register_user(request):
 
 @csrf_protect
 def login_user(request):
-
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('pswrd')
@@ -60,7 +54,6 @@ def login_user(request):
 @login_required
 def log_out_user(request):
     logout(request)
-
     return redirect('home page')
 
 
@@ -72,49 +65,55 @@ def log_out_user(request):
 #     success_url = reverse_lazy('index')
 
 
-
-@login_required
-def user_ads(request, username):
-
-    if request.user.is_authenticated:
-
-        user = request.user
-        user_active_ads = Products.objects.filter(creator=user.pk)
-
-        context = {'user': user,
-                   'user_active_ads': user_active_ads,
-                   'user_is_auth': request.user.is_authenticated,
-                   }
-
-        return render(request, 'my_ads.html', context)
-
-
 @login_required
 def profile_details(request, username):
     user = User.objects.filter(username=username).get()
     form = AccountsEditForm(instance=user)
+    form_picture = AddProfilePicture(instance=user)
 
     if request.method == 'POST':
         form = AccountsEditForm(request.POST, instance=user)
+        form_picture = AddProfilePicture(request.POST, request.FILES, instance=user)
 
-        if form.is_valid().is_valid():
+        if form.is_valid():
             form.save()
+            return redirect('login')
+
+        if form_picture.is_valid():
+            picture = form_picture.cleaned_data['user_picture']
+            if not ProfilePicture.objects.filter(user=user):
+                ProfilePicture.objects.create(user=user, user_picture=picture).save()
+            ProfilePicture.objects.filter(user=user).delete()
+            ProfilePicture.objects.create(user=user, user_picture=picture).save()
+
 
     context = {
         'user': user,
         'user_is_auth': request.user.is_authenticated,
         'form': form,
-
+        'form_picture': form_picture,
+        'user_picture': ProfilePicture.objects.filter(user=user).get(),
     }
 
     return render(request, 'profile_details.html', context)
 
 
-def favourite_ads_user(request, username):
-    user = request.user
-    user_favourite_ads = ProductLikes.objects.filter(user=user.pk)
+@login_required
+def user_ads(request, username):
+    user = User.objects.filter(username=username).get()
+    user_active_ads = Products.objects.filter(creator=user.pk)
 
-    print(user_favourite_ads)
+    context = {'user': user,
+                'user_active_ads': user_active_ads,
+                'user_is_auth': request.user.is_authenticated,
+                }
+
+    return render(request, 'my_ads.html', context)
+
+
+def favourite_user_ads(request, username):
+    user = User.objects.filter(username=username).get()
+    user_favourite_ads = ProductLikes.objects.filter(user=user.pk)
 
     context = {
         'user': user,
