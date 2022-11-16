@@ -70,6 +70,9 @@
     height: 25px;
     width: 75px;
     text-decoration: None;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /*.my--ads--add--button:hover{*/

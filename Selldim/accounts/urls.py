@@ -15,7 +15,7 @@ urlpatterns = [
             path('my_ads/', views.user_ads, name='user ads'),
             path('favourite_ads/', views.favourite_user_ads, name='user favourite ads'),
             path('profile_details/', views.profile_details, name='profile details'),
-            # path('profile_additional_info/', views.profile_details, name='profile add picture'),
+
     ]))
 
 

@@ -179,4 +179,5 @@ button:hover{
     margin-left: 140px;
 	opacity: 0;
 	margin-top: 75px;
+    z-index: 9;
 }

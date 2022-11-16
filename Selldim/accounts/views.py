@@ -86,13 +86,17 @@ def profile_details(request, username):
             ProfilePicture.objects.filter(user=user).delete()
             ProfilePicture.objects.create(user=user, user_picture=picture).save()
 
+    user_picture = None
+    if ProfilePicture.objects.filter(user=user):
+        user_picture = ProfilePicture.objects.filter(user=user).get()
+
 
     context = {
         'user': user,
         'user_is_auth': request.user.is_authenticated,
         'form': form,
         'form_picture': form_picture,
-        'user_picture': ProfilePicture.objects.filter(user=user).get(),
+        'user_picture': user_picture,
     }
 
     return render(request, 'profile_details.html', context)

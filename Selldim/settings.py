@@ -38,9 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # 'channels',
+
     'Selldim.accounts',
     'Selldim.products',
     'Selldim.common',
+    'Selldim.chat',
 ]
 
 MIDDLEWARE = [
@@ -146,10 +149,23 @@ CACHES = {
 }
 
 
+# ASGI_APPLICATION = 'Selldim.asgi.application'
+
+#
+# CHANNEL_LAYERS = {
+#     "default": {
+#         "BACKEND": "channels.layers.InMemoryChannelLayer"
+#     }
+# }
+
+
+
+
+
 
 #TODO | Search bar!                                       // DONE! //
 #TODO | Messages between users
 #TODO | Like button (adding to favourites)                // DONE! //
 #TODO | User favourite page                               // DONE! //
-#TODO | User Profile Picture
+#TODO | User Profile Picture                              // DONE! //
 #TODO | Images to show while creating a new add           // DONE! //
