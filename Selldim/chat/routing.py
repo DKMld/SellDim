@@ -1,11 +1,7 @@
-from django.urls import path, include
-from Selldim.chat.consumers import ChatConsumer
-
-# Here, "" is routing to the URL ChatConsumer which
-# will handle the chat functionality.
+from django.urls import re_path
+from Selldim.chat import consumers as chat_consumers
 
 
-websocket_urlpatterns = [
-
-
+websocket_url_patterns = [
+    re_path(r'ws/chat/(?P<room_name>\w+)/$', chat_consumers.ChatRoomConsumer.as_asgi())
 ]
