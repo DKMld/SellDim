@@ -6,7 +6,10 @@ body{
 
 }
 
-
+.nav--bar--div{
+    display: flex;
+    justify-content: space-between;
+}
 .nav--bar{
     padding: 30px;
     width: 100%;

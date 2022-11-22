@@ -1,4 +1,5 @@
 {% extends 'index.html' %}
+{% load common_extras %}
 {% load static %}
 
 <!DOCTYPE html>
@@ -31,7 +32,7 @@
             <div class="name--price--description--div--main">
             <div class="name--price--div">
                 {% if user_is_auth %}
-                <span class="heart" style="padding: 95%">
+                <span class="heart" style="padding-left: 95%">
                     <a href="{% url 'product like' product.id %}">
                         {% if product_liked_by_user %}
                             <svg style="color: red"
@@ -81,8 +82,14 @@
             </div>
 
                 <div class="description--div">
-                    <h3 class="h3--description--tag">Description</h3>
-                    {{ product.description }}
+                    <div>
+                        <h3 class="h3--description--tag">Description</h3>
+                        {{ product.description }}
+                    </div>
+                    <div>
+
+                        <a href="{% url 'room' product.creator|conc_str:user.username  %}">Send Message</a>
+                    </div>
                 </div>
 
 

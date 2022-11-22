@@ -39,10 +39,12 @@
         <a class="nav--bar--links" href="{% url 'home page' %}">Home</a>
         <a class="nav--bar--links" href="{% url 'sell' %}">Sell</a>
         <a class="nav--bar--links" href="#">About Us</a>
+        <a class="nav--bar--links" href="{% url 'chat room' %}">Messages</a>
 
 
 
         <div class="username--logout--div">
+
             <a href="{% url 'profile details' user.username %}" class="user--username">{{ user.username }}</a>
 
             <div style="margin-top: 20px;

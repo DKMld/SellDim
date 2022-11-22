@@ -53,6 +53,7 @@ class ProductDetails(views.View):
         context = {
             'slug': self.kwargs['slug'],
             'product': product,
+            'user': request.user,
             'user_is_auth': request.user.is_authenticated,
             'product_liked_by_user': product_liked_by_user,
         }

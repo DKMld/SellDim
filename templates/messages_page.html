@@ -1,8 +1,17 @@
+{% extends 'index.html' %}
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
+
+
 <head>
+    {% block head %}
     <meta charset="UTF-8">
     <title>Messages</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'chat_room_page.css' %}">
+    {% endblock %}
 </head>
 
 
@@ -10,34 +19,82 @@
 
 <html>
   <body>
-  <textarea id="chat-text" cols="80" rows="30"></textarea><br>
-  <input id="input" type="text" size="80"><br>
-  <input id="submit" type="button" value="Send Message">
+  {% block content %}
 
+<div class="page-content page-container" id="page-content">
+    <div class="padding">
+        <div class="row container d-flex justify-content-center">
+<div class="col-md-6">
+            <div class="card card-bordered">
+              <div class="card-header">
+                <h4 class="card-title"><strong>Chat</strong></h4>
+                <a class="btn btn-xs btn-secondary" href="#" data-abc="true">Let's Chat App</a>
+              </div>
+
+
+          <div class="ps-container ps-theme-default ps-active-y" id="chat-content" style="overflow-y: scroll !important; height:400px !important;">
+                {% for msg in messages %}
+                  {% if msg.sender != request.user %}
+                  <div class="media media-chat media-chat-reverse">
+                  <img class="avatar" src="" alt="...">
+                  <div class="media-body">
+                    <p>{{ msg.message }} :{{ msg.sender }}</p>
+                  </div>
+                </div>
+
+                {% else %}
+                 <div class="media media-chat">
+                  <img class="avatar" src="{{ current_user_image.url }}" alt="...">
+                  <div class="media-body">
+                    <p>{{ msg.sender }}: {{ msg.message }}</p>
+                  </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+          </div>
+
+<div class="publisher bt-1 border-light">
+    <img class="avatar avatar-xs" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="...">
+    <input id="input" class="input" type="text" placeholder="Write something">
+    <input id="submit" type="button" value="Send Message">
+
+</div>
+
+
+
+{#      --------------------------------------#}
 
   
-        <div id="user-hello"></div>
 
+{#  <textarea id="chat-text" cols="80" rows="30"></textarea><br>#}
+{#  <input id="input" type="text" size="80"><br>#}
+{#  <input id="submit" type="button" value="Send Message">#}
+{#      --------------------------------------#}
 
         {{ room_name|json_script:'room_name' }}
         {{ request.user.username|json_script:'user_username' }}
+
         <script>
             const roomName = JSON.parse(document.getElementById('room_name').textContent);
             const user_username = JSON.parse(document.getElementById('user_username').textContent);
 
+
             document.querySelector('#submit').onclick = function (e) {
                 const messageInputDom = document.querySelector('#input');
                 const message = messageInputDom.value;
+
                 chatSocket.send(JSON.stringify({
                     'message': message,
-                    'user_username': user_username
+                    'user_username': user_username,
+                    'room_name': roomName,
+
                 }))
                 messageInputDom.value = '';
 
             };
 
 
-
+            {#Creates a new socket#}
             const chatSocket = new WebSocket(
                 'ws://' +
                 window.location.host +
@@ -46,63 +103,27 @@
                 '/'
             );
 
-            chatSocket.addEventListener('error', (event) => {
-                console.log('WebSocket error: ', event);
-            });
+            {#chatSocket.addEventListener('error', (event) => {#}
+            {#    console.log('WebSocket error: ', event);#}
+            {#);#}
 
             chatSocket.onmessage = function (e) {
                 const data = JSON.parse(e.data);
-                console.log(data)
+                const new_message =
+                            '<div class="media media-chat">' +
+                            '<img class="avatar" src="{{ current_user_image.url }}" alt="...">' +
+                            '<div class="media-body">' +
+                            '<p> {{request.user}}: ' + data.message + '</p>' +
+                            '<p class="meta"><time datetime="2018">00:06</time></p>' +
+                            '</div>'
 
-                document.querySelector('#chat-text').value += (data.user_username + ':' + ' ' + data.message + '\n')
+
+                document.querySelector('#chat-content').innerHTML += new_message
             };
         </script>
 
+  {% endblock %}
 
 
-{#    <center><h1>Hello , Welcome to my chat site ! {{request.user}}</h1></center>#}
-{#    <br>#}
-{#    {% if request.user.is_authenticated  %}#}
-{#    <center> Logout the chat Page <a href = "{% url 'log out' %}">Logout</a></center>#}
-{#    {% endif %}#}
-{#    <div#}
-{#      class="chat__item__container"#}
-{#      id="id_chat_item_container"#}
-{#      style="font-size: 20px"#}
-{#    >#}
-{#      <br />#}
-{#      <input type="text" id="id_message_send_input" />#}
-{#      <button type="submit" id="id_message_send_button">Send Message</button>#}
-{#      <br />#}
-{#      <br />#}
-{#    </div>#}
-{#    <script>#}
-{#      const chatSocket = new WebSocket("ws://" + window.location.host + "/");#}
-{#      chatSocket.onopen = function (e) {#}
-{#        console.log("The connection was setup successfully !");#}
-{#      };#}
-{#      chatSocket.onclose = function (e) {#}
-{#        console.log("Something unexpected happened !");#}
-{#      };#}
-{#      document.querySelector("#id_message_send_input").focus();#}
-{#      document.querySelector("#id_message_send_input").onkeyup = function (e) {#}
-{#        if (e.keyCode == 13) {#}
-{#          document.querySelector("#id_message_send_button").click();#}
-{#        }#}
-{#      };#}
-{#      document.querySelector("#id_message_send_button").onclick = function (e) {#}
-{#        var messageInput = document.querySelector(#}
-{#          "#id_message_send_input"#}
-{#        ).value;#}
-{#        chatSocket.send(JSON.stringify({ message: messageInput, username : "{{request.user.username}}"}));#}
-{#      };#}
-{#      chatSocket.onmessage = function (e) {#}
-{#        const data = JSON.parse(e.data);#}
-{#        var div = document.createElement("div");#}
-{#        div.innerHTML = data.username + " : " + data.message;#}
-{#        document.querySelector("#id_message_send_input").value = "";#}
-{#        document.querySelector("#id_chat_item_container").appendChild(div);#}
-{#      };#}
-{#    </script>#}
   </body>
 </html>
