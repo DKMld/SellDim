@@ -4,8 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_protect
-from Selldim.accounts.forms import AccountsForm, AccountsEditForm, AddProfilePicture
-from Selldim.accounts.models import ProfilePicture
+from Selldim.accounts.forms import AccountsForm, AccountsEditForm, AddProfilePicture, LeaveComment
+from Selldim.accounts.models import ProfilePicture, UserComments
 from Selldim.common.models import ProductLikes
 from Selldim.products.models import Products
 
@@ -25,7 +25,7 @@ def register_user(request):
         'form': form,
     }
 
-    return render(request, 'register.html', context)
+    return render(request, 'auth_pages/register.html', context)
 
 
 @csrf_protect
@@ -44,10 +44,10 @@ def login_user(request):
 
         elif user is None:
             messages.success(request, 'Username or password is incorrect!')
-            return render(request, 'login.html')
+            return render(request, 'auth_pages/login.html')
 
     context = {'user_is_auth': request.user.is_authenticated, }
-    return render(request, 'login.html', context)
+    return render(request, 'auth_pages/login.html', context)
 
 
 @csrf_protect
@@ -99,7 +99,7 @@ def profile_details(request, username):
         'user_picture': user_picture,
     }
 
-    return render(request, 'profile_details.html', context)
+    return render(request, 'account_pages/profile_details.html', context)
 
 
 @login_required
@@ -112,7 +112,7 @@ def user_ads(request, username):
                 'user_is_auth': request.user.is_authenticated,
                 }
 
-    return render(request, 'my_ads.html', context)
+    return render(request, 'common_pages/my_ads.html', context)
 
 
 def favourite_user_ads(request, username):
@@ -125,4 +125,33 @@ def favourite_user_ads(request, username):
         'user_favourite_ads': user_favourite_ads,
     }
 
-    return render(request, 'my_favourite_ads.html', context)
+    return render(request, 'common_pages/my_favourite_ads.html', context)
+
+
+def other_users_ads(request, username):
+    other_user = User.objects.filter(username=username).get()
+    other_user_ads = Products.objects.filter(creator=other_user)
+    other_user_picture = ProfilePicture.objects.filter(user=other_user).get()
+
+    comments = UserComments.objects.filter(user=other_user)
+
+    form = LeaveComment()
+    if request.method == 'POST':
+        form = LeaveComment(request.POST)
+        if form.is_valid():
+            data = form.save(commit=False)
+            data.sender = request.user
+            data.user = other_user
+            data.save()
+
+    context = {
+        'user_is_auth': request.user.is_authenticated,
+        'add_count': other_user_ads.count(),
+        'other_user_ads': other_user_ads,
+        'other_user_picture': other_user_picture,
+        'other_user': other_user,
+        'comments': comments,
+        'form': form,
+    }
+
+    return render(request, 'common_pages/other_user_ads_page.html', context)

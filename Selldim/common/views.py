@@ -18,7 +18,7 @@ class HomePage(views.View):
             'user_is_auth': request.user.is_authenticated,
         }
 
-        return render(request, 'index.html', context)
+        return render(request, 'common_pages/index.html', context)
 
 
 def product_like(request, pk):
@@ -57,4 +57,4 @@ def product_search(request):
             'products': products
         }
 
-        return render(request, 'product_search_page.html', context)
+        return render(request, 'product_pages/product_search_page.html', context)

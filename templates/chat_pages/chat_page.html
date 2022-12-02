@@ -1,0 +1,52 @@
+{% extends 'common_pages/index.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% block head %}
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+    <link rel="stylesheet" href="{% static 'chat_room_page.css' %}">
+    {% endblock %}
+</head>
+
+
+<body>
+{% block content %}
+
+<ul>
+{#    {% for msg in user_messages %}#}
+    {% for ad in receieved_messages %}
+        <div>
+        <a href="{% url 'receieve message' ad.room_name  %}">
+
+
+        <a href=""></a>
+
+        <div class="my_chats--picture--div">
+            <img src="{{ ad.image.url }}" alt="" width="40px" height="40px">
+        </div>
+
+        <div class="my_chats--context--div">
+            <div class="my_chats--name--div">{{ user.username }}</div>
+            <div class="my_chats--product_name--div">{{ ad.product_name }}</div>
+            <div class="my_chats--last_msg--div"></div>
+        </div>
+
+        <div class="my_chats--date--div"></div>
+
+    </div>
+        </a>
+
+    {% endfor %}
+</ul>
+
+{% endblock %}
+</body>
+
+
+
+</html>

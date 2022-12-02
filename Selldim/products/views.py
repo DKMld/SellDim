@@ -34,7 +34,7 @@ def sell_product(request):
             "user_is_auth": request.user.is_authenticated
         }
         messages.success(request, 'Add added successfully!')
-        return render(request, 'sell_products_page.html', context)
+        return render(request, 'product_pages/sell_products_page.html', context)
 
     messages.error(request, 'You must be logged in order to sell!')
     return redirect('login')
@@ -58,7 +58,7 @@ class ProductDetails(views.View):
             'product_liked_by_user': product_liked_by_user,
         }
 
-        return render(request, 'product_details.html', context)
+        return render(request, 'product_pages/product_details.html', context)
 
 
 @method_decorator(login_required, name='dispatch')
@@ -74,7 +74,7 @@ class ProductEdit(views.View):
             'product': product,
         }
 
-        return render(request, 'product_edit_page.html', context)
+        return render(request, 'product_pages/product_edit_page.html', context)
 
     def post(self, request, *args, **kwargs):
         product = Products.objects.filter(pk=self.kwargs['pk']).get()
@@ -103,4 +103,6 @@ class ProductDelete(views.View):
 
             return redirect('user ads', context)
 
-        return render(request, 'my_ads.html')
+        return render(request, 'common_pages/my_ads.html')
+
+

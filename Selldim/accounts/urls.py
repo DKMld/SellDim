@@ -13,6 +13,7 @@ urlpatterns = [
     ])),
     path('profile/<username>/', include([
             path('my_ads/', views.user_ads, name='user ads'),
+            path('ads/', views.other_users_ads, name='other_users_ads'),
             path('favourite_ads/', views.favourite_user_ads, name='user favourite ads'),
             path('profile_details/', views.profile_details, name='profile details'),
 

@@ -1,4 +1,4 @@
-{% extends 'index.html' %}
+{% extends 'common_pages/index.html' %}
 {% load static %}
 
 <!DOCTYPE html>
@@ -27,8 +27,7 @@
 <div class="col-md-6">
             <div class="card card-bordered">
               <div class="card-header">
-                <h4 class="card-title"><strong>Chat</strong></h4>
-                <a class="btn btn-xs btn-secondary" href="#" data-abc="true">Let's Chat App</a>
+                <h4 class="card-title"><strong>Chat with {{ product.creator }} about {{ product.product_name }}</strong></h4>
               </div>
 
 
@@ -36,7 +35,11 @@
                 {% for msg in messages %}
                   {% if msg.sender != request.user %}
                   <div class="media media-chat media-chat-reverse">
-                  <img class="avatar" src="" alt="...">
+                  {% if product_creator_image.user_picture.url %}
+                  <img class="avatar" src="{{ product_creator_image.user_picture.url }}" alt="...">
+                  {% else %}
+                  <img class="avatar" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="...">
+                  {% endif %}
                   <div class="media-body">
                     <p>{{ msg.message }} :{{ msg.sender }}</p>
                   </div>
@@ -54,18 +57,20 @@
           </div>
 
 <div class="publisher bt-1 border-light">
-    <img class="avatar avatar-xs" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="...">
-    <input id="input" class="input" type="text" placeholder="Write something">
-    <input id="submit" type="button" value="Send Message">
+
+    {% if current_user_image.url %}
+        <img class="avatar" src="{{ current_user_image.url }}" alt="...">
+    {% else %}
+        <img class="avatar" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="...">
+    {% endif %}
+
+    <input id="input" class="publisher-input" type="text" placeholder="Write something">
+    <input class="bn33" id="submit" type="button" value="Send Message">
 
 </div>
 
 
-
 {#      --------------------------------------#}
-
-  
-
 {#  <textarea id="chat-text" cols="80" rows="30"></textarea><br>#}
 {#  <input id="input" type="text" size="80"><br>#}
 {#  <input id="submit" type="button" value="Send Message">#}
@@ -73,10 +78,12 @@
 
         {{ room_name|json_script:'room_name' }}
         {{ request.user.username|json_script:'user_username' }}
+{#        {{ |json_script:'receiever_username' }}#}
 
         <script>
             const roomName = JSON.parse(document.getElementById('room_name').textContent);
             const user_username = JSON.parse(document.getElementById('user_username').textContent);
+            {#const receiever_username = JSON.parse(document.getElementById('receiever_username').textContent);#}
 
 
             document.querySelector('#submit').onclick = function (e) {
@@ -87,10 +94,10 @@
                     'message': message,
                     'user_username': user_username,
                     'room_name': roomName,
+                    {#'receiever_username': receiever_username,#}
 
                 }))
                 messageInputDom.value = '';
-
             };
 
 
@@ -111,7 +118,11 @@
                 const data = JSON.parse(e.data);
                 const new_message =
                             '<div class="media media-chat">' +
-                            '<img class="avatar" src="{{ current_user_image.url }}" alt="...">' +
+                            '{% if current_user_image.url %}'+
+                            '<img class="avatar" src="{{ current_user_image.url }}" alt="...">'+
+                            '{% else %}'+
+                            '<img class="avatar" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="...">' +
+                            '{% endif %}' +
                             '<div class="media-body">' +
                             '<p> {{request.user}}: ' + data.message + '</p>' +
                             '<p class="meta"><time datetime="2018">00:06</time></p>' +

@@ -1,4 +1,4 @@
-{% extends 'index.html' %}
+{% extends 'common_pages/index.html' %}
 {% load common_extras %}
 {% load static %}
 
@@ -32,7 +32,8 @@
             <div class="name--price--description--div--main">
             <div class="name--price--div">
                 {% if user_is_auth %}
-                <span class="heart" style="padding-left: 95%">
+                <span class="heart" style="display: flex; justify-content: space-between">
+                    <a href="{% url 'other_users_ads' product.creator.username %}">By: {{ product.creator.username }}</a>
                     <a href="{% url 'product like' product.id %}">
                         {% if product_liked_by_user %}
                             <svg style="color: red"
@@ -86,9 +87,10 @@
                         <h3 class="h3--description--tag">Description</h3>
                         {{ product.description }}
                     </div>
-                    <div>
-
-                        <a href="{% url 'room' product.creator|conc_str:user.username  %}">Send Message</a>
+                    <div style="display: flex; align-items: end">
+                        {% if user != product.creator %}
+                        <a class="bn33" href="{% url 'send message' product.id %}">Send Message</a>
+                        {% endif %}
                     </div>
                 </div>
 
