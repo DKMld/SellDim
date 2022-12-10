@@ -35,8 +35,8 @@
                 {% for msg in messages %}
                   {% if msg.sender != request.user %}
                   <div class="media media-chat media-chat-reverse">
-                  {% if product_creator_image.user_picture.url %}
-                  <img class="avatar" src="{{ product_creator_image.user_picture.url }}" alt="...">
+                  {% if other_user_image.user_picture.url %}
+                  <img class="avatar" src="{{ other_user_image.user_picture.url }}" alt="...">
                   {% else %}
                   <img class="avatar" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="...">
                   {% endif %}
@@ -78,12 +78,12 @@
 
         {{ room_name|json_script:'room_name' }}
         {{ request.user.username|json_script:'user_username' }}
-{#        {{ |json_script:'receiever_username' }}#}
+        {{ receiever|json_script:'receiever_username' }}
 
         <script>
             const roomName = JSON.parse(document.getElementById('room_name').textContent);
             const user_username = JSON.parse(document.getElementById('user_username').textContent);
-            {#const receiever_username = JSON.parse(document.getElementById('receiever_username').textContent);#}
+            const receiever_username = JSON.parse(document.getElementById('receiever_username').textContent);
 
 
             document.querySelector('#submit').onclick = function (e) {
@@ -94,7 +94,7 @@
                     'message': message,
                     'user_username': user_username,
                     'room_name': roomName,
-                    {#'receiever_username': receiever_username,#}
+                    'receiever_username': receiever_username,
 
                 }))
                 messageInputDom.value = '';
@@ -106,8 +106,8 @@
                 'ws://' +
                 window.location.host +
                 '/ws/chat/' +
-                roomName +
-                '/'
+                roomName + '/' +
+                receiever_username + '/'
             );
 
             {#chatSocket.addEventListener('error', (event) => {#}
