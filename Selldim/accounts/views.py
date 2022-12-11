@@ -37,9 +37,7 @@ def login_user(request):
         user = authenticate(request, username=username, password=password)
 
         if user is not None:
-
             login(request, user)
-
             return redirect('home page')
 
         elif user is None:
@@ -90,7 +88,6 @@ def profile_details(request, username):
     if ProfilePicture.objects.filter(user=user):
         user_picture = ProfilePicture.objects.filter(user=user).get()
 
-
     context = {
         'user': user,
         'user_is_auth': request.user.is_authenticated,
@@ -107,10 +104,11 @@ def user_ads(request, username):
     user = User.objects.filter(username=username).get()
     user_active_ads = Products.objects.filter(creator=user.pk)
 
-    context = {'user': user,
-                'user_active_ads': user_active_ads,
-                'user_is_auth': request.user.is_authenticated,
-                }
+    context = {
+        'user': user,
+        'user_active_ads': user_active_ads,
+        'user_is_auth': request.user.is_authenticated,
+    }
 
     return render(request, 'common_pages/my_ads.html', context)
 
@@ -131,7 +129,10 @@ def favourite_user_ads(request, username):
 def other_users_ads(request, username):
     other_user = User.objects.filter(username=username).get()
     other_user_ads = Products.objects.filter(creator=other_user)
-    other_user_picture = ProfilePicture.objects.filter(user=other_user).get()
+
+    other_user_picture = None
+    if ProfilePicture.objects.filter(user=other_user):
+        other_user_picture = ProfilePicture.objects.filter(user=other_user).get()
 
     comments = UserComments.objects.filter(user=other_user)
 

@@ -3,19 +3,22 @@ body{
 	min-height: 100vh;
 	font-family: 'Jost', sans-serif;
 	background: whitesmoke;
-
 }
+
 
 .nav--bar--div{
     display: flex;
     justify-content: space-between;
 }
+
+
 .nav--bar{
     padding: 30px;
     width: 100%;
     text-align: center;
     display: inline-flex;
     background-color: #002f34;
+    height: 65px;
 }
 
 
@@ -106,6 +109,7 @@ li {
   border-radius: 25px;
   margin: 10px;
 
+
 }
 
 
@@ -120,6 +124,11 @@ li:hover,
 li:focus-within {
   background: cadetblue;
   cursor: pointer;
+
+}
+
+
+.li--item{
 
 }
 
@@ -156,4 +165,44 @@ ul li ul li {
   clear: both;
   width: 55%;
   margin: 2px;
+}
+
+.logo--div{
+    height: 125px;
+    position: absolute;
+    margin-left: 45%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon--main--div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon--div{
+    margin-right: 18px;
+    background-color: white;
+    border-radius: 25px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.icon--div:hover{
+    background-color: cadetblue;
+}
+
+.icon--label--div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon--link{
+    position: absolute;
+    width: 30px;
+    height: 30px;
 }

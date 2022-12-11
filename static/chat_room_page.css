@@ -367,3 +367,14 @@ button, input, optgroup, select, textarea {
 .my_chats--bin--icon--div{
 
 }
+
+.no--msg--div{
+    width: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    box-shadow: 0px 0px 8px 0px purple;
+    margin: 10px;
+    height: 60px
+}

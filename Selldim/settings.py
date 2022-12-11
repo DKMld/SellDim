@@ -131,7 +131,7 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]
 
-MEDIA_ROOT = Path.joinpath(BASE_DIR, '/media')
+MEDIA_ROOT = Path.joinpath(BASE_DIR, '/media/')
 MEDIA_URL = '/media/'
 
 
@@ -159,7 +159,7 @@ CHANNEL_LAYERS = {
 
 
 #TODO | Search bar!                                       // DONE! //
-#TODO | Messages between users
+#TODO | Messages between users                            // DONE! //
 #TODO | Like button (adding to favourites)                // DONE! //
 #TODO | User favourite page                               // DONE! //
 #TODO | User Profile Picture                              // DONE! //

@@ -1,6 +1,9 @@
+import os
+
 from django import views
 from django.shortcuts import render, redirect
 
+from Selldim import settings
 from Selldim.common.forms import ProductSearchForm
 from Selldim.common.models import ProductLikes
 from Selldim.products.models import Products
@@ -58,3 +61,14 @@ def product_search(request):
         }
 
         return render(request, 'product_pages/product_search_page.html', context)
+
+
+def product_search_by_category(request, category):
+    products = Products.objects.filter(category=category)
+
+    context = {
+        'user_is_auth': request.user.is_authenticated,
+        'products': products,
+    }
+
+    return render(request, 'product_pages/product_search_page.html', context)

@@ -33,7 +33,7 @@
             <div class="name--price--div">
                 {% if user_is_auth %}
                 <span class="heart" style="display: flex; justify-content: space-between">
-                    <a href="{% url 'other_users_ads' product.creator.username %}">By: {{ product.creator.username }}</a>
+                    <a class="link--to--user--profile"  href="{% url 'other_users_ads' product.creator.username %}">By: {{ product.creator.username }}</a>
                     <a href="{% url 'product like' product.id %}">
                         {% if product_liked_by_user %}
                             <svg style="color: red"

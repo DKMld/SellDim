@@ -88,3 +88,17 @@
   color: white;
   text-decoration: none;
 }
+
+.link--to--user--profile{
+    text-decoration: unset;
+    font-size: 16px;
+    font-style: italic;
+    color: gray;
+}
+
+.link--to--user--profile:hover{
+    text-decoration: unset;
+    font-size: 16px;
+    font-style: italic;
+    color: #573b8a;
+}

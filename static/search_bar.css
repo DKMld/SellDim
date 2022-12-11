@@ -14,7 +14,7 @@
 
 input,
 button {
-  color: #fff;
+  color: #573b8a;
   font-family: Nunito;
   padding: 0;
   margin: 0;
@@ -27,9 +27,9 @@ button {
   width: 550px;
   padding: 5px;
 
-  background-color: #ff7575;
+  background-color: white;
   border-radius: 20px;
-  box-shadow: 0 10px 40px #ff7c7c, 0 0 0 20px #ffffffeb;
+  box-shadow: 0 10px 40px #573b8a, 0 0 0 20px #ffffffeb;
   transform: scale(0.6);
   margin: auto;
 
@@ -47,7 +47,7 @@ input[type="text"] {
 }
 
 input[type="text"]::placeholder {
-  color: #e16868;
+  color: #573b8a;
 }
 
 #s-cover {
@@ -71,7 +71,7 @@ button {
   height: 43px;
   margin-top: 0;
   border-width: 15px;
-  border: 15px solid #fff;
+  border: 15px solid #573b8a;
   background-color: transparent;
   border-radius: 50%;
   transition: 0.5s ease all;
@@ -98,7 +98,7 @@ button span:after {
   right: 0;
   width: 45px;
   height: 15px;
-  background-color: #fff;
+  background-color: #573b8a;
   border-radius: 10px;
   transform: rotateZ(0);
   transition: 0.5s ease all;
@@ -109,7 +109,7 @@ button span:after {
   width: 67px;
   height: 15px;
   border-width: 0;
-  background-color: #fff;
+  background-color: #573b8a;
   border-radius: 20px;
 }
 
@@ -134,7 +134,7 @@ button span:after {
 #s-cover:hover button span:after {
   right: -6px;
   width: 40px;
-  background-color: #fff;
+  background-color: #573b8a;
 }
 
 

@@ -1,5 +1,6 @@
 {% load static %}
 
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,6 +12,7 @@
     <link rel="stylesheet" href="{% static 'styles.css' %}">
     <link rel="stylesheet" href="{% static 'add_style.css' %}">
     <link rel="stylesheet" href="{% static 'search_bar.css' %}">
+
     {% endblock %}
 </head>
 
@@ -28,20 +30,27 @@
         <a class="nav--bar--links" href="{% url 'register' %}">Register</a>
         <a class="nav--bar--links" href="#">About Us</a>
 
+
     </nav>
+    <div class="logo--div">
+        <img src="{% static 'selldimlogo.png' %}" width="150px" height="125px" alt="">
+    </div>
 </div>
 
 
     {% else %}
+
     <div class="nav--bar--div">
+    <div class="logo--div">
+        <img src="{% static 'selldimlogo.png' %}" width="150px" height="125px" alt="">
+    </div>
+
     <nav class="nav--bar">
 
         <a class="nav--bar--links" href="{% url 'home page' %}">Home</a>
         <a class="nav--bar--links" href="{% url 'sell' %}">Sell</a>
         <a class="nav--bar--links" href="#">About Us</a>
         <a class="nav--bar--links" href="{% url 'chat room' %}">Messages</a>
-
-
 
         <div class="username--logout--div">
 
@@ -103,6 +112,91 @@
   </form>
 </div>
 {# search bar end#}
+
+    {# categories boxes #}
+    <div class="icon--label--div">
+        <h2>Search by category</h2>
+    </div>
+
+    <div class="icon--main--div">
+
+        <div class="icon--div">
+            <a class="icon--link" href="{% url 'product search by category' category='vehicles' %}"></a>
+            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-car-front-fill" viewBox="0 0 16 16">
+               <path d="M2.52 3.515A2.5 2.5 0 0 1 4.82 2h6.362c1 0 1.904.596 2.298 1.515l.792 1.848c.075.175.21.319.38.404.5.25.855.715.965 1.262l.335 1.679c.033.161.049.325.049.49v.413c0 .814-.39 1.543-1 1.997V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.338c-1.292.048-2.745.088-4 .088s-2.708-.04-4-.088V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.892c-.61-.454-1-1.183-1-1.997v-.413a2.5 2.5 0 0 1 .049-.49l.335-1.68c.11-.546.465-1.012.964-1.261a.807.807 0 0 0 .381-.404l.792-1.848ZM3 10a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm10 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM6 8a1 1 0 0 0 0 2h4a1 1 0 1 0 0-2H6ZM2.906 5.189a.51.51 0 0 0 .497.731c.91-.073 3.35-.17 4.597-.17 1.247 0 3.688.097 4.597.17a.51.51 0 0 0 .497-.731l-.956-1.913A.5.5 0 0 0 11.691 3H4.309a.5.5 0 0 0-.447.276L2.906 5.19Z"/>
+            </svg>
+        </div>
+
+
+        <div class="icon--div">
+            <a class="icon--link" href="{% url 'product search by category' category='animals' %}"></a>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-paw" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+               <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+               <path d="M14.7 13.5c-1.1 -1.996 -1.441 -2.5 -2.7 -2.5c-1.259 0 -1.736 .755 -2.836 2.747c-.942 1.703 -2.846 1.845 -3.321 3.291c-.097 .265 -.145 .677 -.143 .962c0 1.176 .787 2 1.8 2c1.259 0 3.004 -1 4.5 -1s3.241 1 4.5 1c1.013 0 1.8 -.823 1.8 -2c0 -.285 -.049 -.697 -.146 -.962c-.475 -1.451 -2.512 -1.835 -3.454 -3.538z"></path>
+               <path d="M20.188 8.082a1.039 1.039 0 0 0 -.406 -.082h-.015c-.735 .012 -1.56 .75 -1.993 1.866c-.519 1.335 -.28 2.7 .538 3.052c.129 .055 .267 .082 .406 .082c.739 0 1.575 -.742 2.011 -1.866c.516 -1.335 .273 -2.7 -.54 -3.052z"></path>
+               <path d="M9.474 9c.055 0 .109 -.004 .163 -.011c.944 -.128 1.533 -1.346 1.32 -2.722c-.203 -1.297 -1.047 -2.267 -1.932 -2.267c-.055 0 -.109 .004 -.163 .011c-.944 .128 -1.533 1.346 -1.32 2.722c.204 1.293 1.048 2.267 1.933 2.267z"></path>
+               <path d="M16.456 6.733c.214 -1.376 -.375 -2.594 -1.32 -2.722a1.164 1.164 0 0 0 -.162 -.011c-.885 0 -1.728 .97 -1.93 2.267c-.214 1.376 .375 2.594 1.32 2.722c.054 .007 .108 .011 .162 .011c.885 0 1.73 -.974 1.93 -2.267z"></path>
+               <path d="M5.69 12.918c.816 -.352 1.054 -1.719 .536 -3.052c-.436 -1.124 -1.271 -1.866 -2.009 -1.866c-.14 0 -.277 .027 -.407 .082c-.816 .352 -1.054 1.719 -.536 3.052c.436 1.124 1.271 1.866 2.009 1.866c.14 0 .277 -.027 .407 -.082z"></path>
+            </svg>
+        </div>
+
+
+        <div class="icon--div">
+            <a class="icon--link" href="{% url 'product search by category' category='electronics' %}"></a>
+           <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-device-mobile" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+               <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+               <rect x="6" y="3" width="12" height="18" rx="2"></rect>
+               <line x1="11" y1="4" x2="13" y2="4"></line>
+               <line x1="12" y1="17" x2="12" y2="17.01"></line>
+            </svg>
+        </div>
+
+
+        <div class="icon--div">
+            <a class="icon--link" href="{% url 'product search by category' category='real estate' %}"></a>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home-search" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+               <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+               <path d="M21 12l-9 -9l-9 9h2v7a2 2 0 0 0 2 2h4.7"></path>
+               <path d="M9 21v-6a2 2 0 0 1 2 -2h2"></path>
+               <circle cx="18" cy="18" r="3"></circle>
+               <path d="M20.2 20.2l1.8 1.8"></path>
+            </svg>
+        </div>
+
+
+        <div class="icon--div">
+            <a class="icon--link" href="{% url 'product search by category' category='clothes' %}"></a>
+           <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-shirt" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M15 4l6 2v5h-3v8a1 1 0 0 1 -1 1h-10a1 1 0 0 1 -1 -1v-8h-3v-5l6 -2a3 3 0 0 0 6 0"></path>
+            </svg>
+        </div>
+
+
+        <div class="icon--div">
+            <a class="icon--link" href="{% url 'product search by category' category='tools' %}"></a>
+           <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hammer" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                <path d="M11.414 10l-7.383 7.418a2.091 2.091 0 0 0 0 2.967a2.11 2.11 0 0 0 2.976 0l7.407 -7.385"></path>
+                <path d="M18.121 15.293l2.586 -2.586a1 1 0 0 0 0 -1.414l-7.586 -7.586a1 1 0 0 0 -1.414 0l-2.586 2.586a1 1 0 0 0 0 1.414l7.586 7.586a1 1 0 0 0 1.414 0z"></path>
+            </svg>
+        </div>
+
+
+        <div class="icon--div">
+            <a class="icon--link" href="{% url 'product search by category' category='sport' %}"></a>
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-ball-football" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+               <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+               <circle cx="12" cy="12" r="9"></circle>
+               <path d="M12 7l4.76 3.45l-1.76 5.55h-6l-1.76 -5.55z"></path>
+               <path d="M12 7v-4m3 13l2.5 3m-.74 -8.55l3.74 -1.45m-11.44 7.05l-2.56 2.95m.74 -8.55l-3.74 -1.45"></path>
+            </svg>
+        </div>
+
+
+
+    </div>
+    {# end of categories boxes #}
 
     {#First row of ads#}
 

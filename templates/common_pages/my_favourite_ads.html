@@ -7,7 +7,7 @@
 <head>
     {% block head %}
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Favourite Ads</title>
     <link rel="stylesheet" href="{% static 'styles.css' %}">
     <link rel="stylesheet" href="{% static 'my_ads_page.css' %}">
     {% endblock %}
@@ -19,6 +19,7 @@
 {% block content %}
 
     <div class="main__ads__div">
+    {% if user_favourite_ads %}
         {% for add in user_favourite_ads %}
 
             <div class="ads__div">
@@ -47,6 +48,11 @@
             </div>
 
         {% endfor %}
+    {% else %}
+        <div class="no--msg--div">
+            <h2>You have not liked any ads yet</h2>
+        </div>
+    {% endif %}
     </div>
 
 {% endblock %}
