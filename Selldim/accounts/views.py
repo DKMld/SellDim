@@ -41,7 +41,7 @@ def login_user(request):
             return redirect('home page')
 
         elif user is None:
-            messages.success(request, 'Username or password is incorrect!')
+            messages.error(request, 'Username or password is incorrect!')
             return render(request, 'auth_pages/login.html')
 
     context = {'user_is_auth': request.user.is_authenticated, }

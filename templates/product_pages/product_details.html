@@ -35,6 +35,7 @@
                 <span class="heart" style="display: flex; justify-content: space-between">
                     <a class="link--to--user--profile"  href="{% url 'other_users_ads' product.creator.username %}">By: {{ product.creator.username }}</a>
                     <a href="{% url 'product like' product.id %}">
+
                         {% if product_liked_by_user %}
                             <svg style="color: red"
                                  xmlns="http://www.w3.org/2000/svg"
@@ -89,7 +90,9 @@
                     </div>
                     <div style="display: flex; align-items: end">
                         {% if user != product.creator %}
-                        <a class="bn33" href="{% url 'send message' room_name=product.id username=product.creator.username %}">Send Message</a>
+                            {% if user_is_auth %}
+                                <a class="bn33" href="{% url 'send message' room_name=product.id username=product.creator.username %}">Send Message</a>
+                            {% endif %}
                         {% endif %}
                     </div>
                 </div>

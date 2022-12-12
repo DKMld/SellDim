@@ -18,7 +18,7 @@ def chat_room(request):
     return render(request, 'chat_pages/chat_page.html', context)
 
 
-def room(request, room_name, username):
+def chat_messages(request, room_name, username):
     if not request.user.is_authenticated:
         return redirect('home page')
 
@@ -53,3 +53,9 @@ def room(request, room_name, username):
 
     }
     return render(request, 'chat_pages/messages_page.html', context)
+
+
+def delete_room(request, room_name, sender, receiever):
+    user_list = [sender, receiever]
+
+    chat_room = ...

@@ -57,7 +57,8 @@ def product_search(request):
 
         context = {
             'user_is_auth': request.user.is_authenticated,
-            'products': products
+            'products': products,
+            'products_count': products.count(),
         }
 
         return render(request, 'product_pages/product_search_page.html', context)
@@ -69,6 +70,7 @@ def product_search_by_category(request, category):
     context = {
         'user_is_auth': request.user.is_authenticated,
         'products': products,
+        'products_count': products.count(),
     }
 
     return render(request, 'product_pages/product_search_page.html', context)
