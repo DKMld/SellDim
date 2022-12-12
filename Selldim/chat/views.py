@@ -55,7 +55,13 @@ def chat_messages(request, room_name, username):
     return render(request, 'chat_pages/messages_page.html', context)
 
 
-def delete_room(request, room_name, sender, receiever):
-    user_list = [sender, receiever]
+def delete_room(request, room_name, sender):
 
-    chat_room = ...
+    receiever_user = request.user
+    sender_user = User.objects.filter(username=sender).get()
+
+    current_chat_room = ChatMessage.objects.filter(room_name=room_name, receiever=receiever_user.id, sender=sender_user).get()
+
+    current_chat_room.delete()
+
+    return redirect('chat room')

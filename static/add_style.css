@@ -130,7 +130,7 @@
     display: flex;
     background-color: white;
     width: auto;
-    max-width: 220px;
+    padding: 5px;
     justify-content: center;
     margin: 10px;
     border-radius: 25px;

@@ -40,11 +40,10 @@
 
 
             <div class="receieved--msg--main--div">
-            <a href=""></a>
 
             <div class="my_chats--picture--div">
                 <img src="{{ product_obj.image.url }}" alt="" width="100px" height="80px">
-                <a style="width: 231px; height: 40px; position: absolute;" href="{% url 'send message' msg.room_name msg.sender %}"></a>
+                <a style="width: 300px; height: 80px; position: absolute;" href="{% url 'send message' msg.room_name msg.sender %}"></a>
             </div>
 
             <div class="my_chats--context--div">
@@ -54,7 +53,9 @@
             </div>
 
             <div class="my_chats--bin--icon--div">
-                <a href="{% url 'chat room delete' %}"></a>
+                <form action="">
+                {% csrf_token %}
+                <a class="asdasd" style="position: absolute;width: 24px; height: 24px;" href="{% url 'chat room delete' msg.room_name msg.sender.username %}"></a>
                 <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-trash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                    <line x1="4" y1="7" x2="20" y2="7"></line>
@@ -63,6 +64,7 @@
                    <path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"></path>
                    <path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"></path>
                 </svg>
+                </form>
             </div>
 
         </div>

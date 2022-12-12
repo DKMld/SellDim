@@ -365,7 +365,11 @@ button, input, optgroup, select, textarea {
 }
 
 .my_chats--bin--icon--div{
+    border-radius: 25px;
 
+}
+.my_chats--bin--icon--div:hover{
+    background-color: cadetblue;
 }
 
 .no--msg--div{
@@ -378,3 +382,4 @@ button, input, optgroup, select, textarea {
     margin: 10px;
     height: 60px
 }
+

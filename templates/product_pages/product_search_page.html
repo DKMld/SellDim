@@ -43,9 +43,20 @@
             <h1 class="header"></h1>
         </div>
 
-        <div class="found--add--count--div">
-           <h2 style="font-weight: 400;">Products found: {{ products_count }}</h2>
+        <div style="display: flex;">
+
+            <div class="found--add--count--div">
+                <h2 style="font-weight: 400;">Products found: {{ products_count }}</h2>
+            </div>
+
+            {% if not products %}
+            <div class="found--add--count--div" style="margin-left: 19%">
+                <h2 style="font-weight: 400;">There are no products matching your search</h2>
+            </div>
+            {% endif %}
+
         </div>
+
 
 
 
