@@ -16,11 +16,18 @@ body{
     padding: 30px;
     width: 100%;
     text-align: center;
-    display: inline-flex;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     background-color: #002f34;
     height: 65px;
 }
 
+.main--links--div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .nav--bar--links{
     margin: 5px;
@@ -50,7 +57,6 @@ body{
     vertical-align: central;
     height: 25px;
     width: 75px;
-    text-decoration: underline;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -79,13 +85,13 @@ body{
     width: auto;
     padding: 13px;
     margin-bottom: 5px;
-    text-decoration: underline;
 }
 
 
 .username--logout--div{
-    padding-left: 65%;
-    display: inline-flex;
+    display: flex;
+    justify-content: center;
+    align-items: normal;
 }
 
 
@@ -129,7 +135,7 @@ li:focus-within {
 
 
 .li--item{
-
+z-index: 1;
 }
 
 
@@ -169,11 +175,12 @@ ul li ul li {
 
 .logo--div{
     height: 125px;
-    position: absolute;
-    margin-left: 45%;
+    margin-right: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: absolute;
+    margin-left: 43%;
 }
 
 .icon--main--div{
@@ -191,9 +198,12 @@ ul li ul li {
     justify-content: center;
     align-items: center;
 }
+
+
 .icon--div:hover{
     background-color: cadetblue;
 }
+
 
 .icon--label--div{
     display: flex;
@@ -201,8 +211,28 @@ ul li ul li {
     align-items: center;
 }
 
+
 .icon--link{
     position: absolute;
     width: 30px;
     height: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+#snow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 1000;
 }

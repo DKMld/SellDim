@@ -10,6 +10,9 @@ class ChatMessage(models.Model):
     receiever = models.ForeignKey(User, related_name='second_user', on_delete=models.CASCADE, null=True)
     timestamp = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return f"{self.room_name} - ({self.sender}/{self.receiever})"
+
 
 class Messages(models.Model):
     room_name = models.ForeignKey(ChatMessage, on_delete=models.CASCADE)
@@ -19,3 +22,6 @@ class Messages(models.Model):
 
     message = models.TextField()
     timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.room_name} - {self.message}"

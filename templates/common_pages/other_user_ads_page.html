@@ -78,6 +78,7 @@
           </div>
           <div class="publisher bt-1 border-light">
 
+    {% if user_is_auth %}
     <form action="" method="POST" style="width: 281px">
         {% csrf_token %}
         {{ form.sender.as_hidden }}
@@ -85,6 +86,7 @@
         {{ form.comment }}
         <input class="bn33" id="submit" type="submit" value="Comment">
     </form>
+    {% endif %}
 
 
 </div>

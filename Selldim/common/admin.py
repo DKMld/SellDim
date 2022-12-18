@@ -1,3 +1,13 @@
 from django.contrib import admin
 
-# Register your models here.
+from Selldim.common.models import ProductLikes
+
+
+class ProductLikesAdmin(admin.ModelAdmin):
+    list_display = ('user', 'product')
+    list_filter = ('user', 'product')
+
+
+admin.site.register(ProductLikes, ProductLikesAdmin)
+
+

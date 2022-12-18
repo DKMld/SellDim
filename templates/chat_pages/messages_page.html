@@ -15,8 +15,6 @@
 </head>
 
 
-
-
 <html>
   <body>
   {% block content %}
@@ -35,8 +33,8 @@
                 {% for msg in messages %}
                   {% if msg.sender != request.user %}
                   <div class="media media-chat media-chat-reverse">
-                  {% if other_user_image.user_picture.url %}
-                  <img class="avatar" src="{{ other_user_image.user_picture.url }}" alt="...">
+                  {% if other_user_image %}
+                  <img class="avatar" src="{{ other_user_image.user_picture.url }}" alt="">
                   {% else %}
                   <img class="avatar" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="...">
                   {% endif %}
@@ -47,7 +45,13 @@
 
                 {% else %}
                  <div class="media media-chat">
-                  <img class="avatar" src="{{ current_user_image.url }}" alt="...">
+
+                 {% if current_user_image %}
+                   <img class="avatar" src="{{ current_user_image.user_picture.url }}" alt="">
+                 {% else %}
+                     <img class="avatar" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="...">
+                 {% endif %}
+
                   <div class="media-body">
                     <p>{{ msg.sender }}: {{ msg.message }}</p>
                   </div>
@@ -58,8 +62,8 @@
 
 <div class="publisher bt-1 border-light">
 
-    {% if current_user_image.url %}
-        <img class="avatar" src="{{ current_user_image.url }}" alt="...">
+    {% if current_user_image %}
+        <img class="avatar" src="{{ current_user_image.user_picture.url }}" alt="...">
     {% else %}
         <img class="avatar" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="...">
     {% endif %}
@@ -118,8 +122,8 @@
                 const data = JSON.parse(e.data);
                 const new_message =
                             '<div class="media media-chat">' +
-                            '{% if current_user_image.url %}'+
-                            '<img class="avatar" src="{{ current_user_image.url }}" alt="...">'+
+                            '{% if current_user_image %}'+
+                            '<img class="avatar" src="{{ current_user_image.user_picture.url }}" alt="...">'+
                             '{% else %}'+
                             '<img class="avatar" src="https://img.icons8.com/color/36/000000/administrator-male.png" alt="...">' +
                             '{% endif %}' +

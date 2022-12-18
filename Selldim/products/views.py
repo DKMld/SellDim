@@ -2,6 +2,8 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.decorators import method_decorator
+
+from Selldim.chat.models import Messages, ChatMessage
 from Selldim.common.models import ProductLikes
 from Selldim.products.forms import ProductForm, EditProductForm
 from Selldim.products.models import Products
@@ -9,11 +11,9 @@ from django import views
 
 
 def sell_product(request):
-
     form = ProductForm()
 
     if request.user.is_authenticated:
-
         if request.method == 'POST':
 
             form = ProductForm(request.POST, request.FILES)
@@ -92,9 +92,19 @@ class ProductEdit(views.View):
 class ProductDelete(views.View):
 
     def get(self, request, *args, **kwargs):
+
         product = get_object_or_404(Products, pk=self.kwargs['pk'])
+        product_like = ProductLikes.objects.filter(product=product)
+        product_chat_room = ChatMessage.objects.filter(room_name=product.id)
+        product_messages = Messages.objects.filter(receiever=request.user)
 
         if product:
+            if product_like:
+                product_like.delete()
+            if product_messages:
+                product_messages.delete()
+            if product_chat_room:
+                product_chat_room.delete()
             product.delete()
 
             context = {

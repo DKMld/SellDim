@@ -37,7 +37,7 @@
     {% if receieved_messages %}
         {% for msg in receieved_messages %}
             {% get_db_object msg.room_name as product_obj %}
-
+{#            {% if product_obj %}#}
 
             <div class="receieved--msg--main--div">
 

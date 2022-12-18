@@ -4,7 +4,6 @@
 
 
 .product--name--category--div{
-
     --vh: 8px;
     -webkit-font-smoothing: antialiased;
     box-sizing: border-box;
@@ -14,30 +13,29 @@
     margin: 10px;
     width: 103.3%;
     background-color: white;
-
 }
+
 
 .label--product--name--div{
     padding: 10px;
 }
+
+
 .label--product--category--div{
     padding: 10px;
     padding-top: 20px;
 }
 
 
-
 .product--name--div{
-
     --vh: 8px;
     -webkit-font-smoothing: antialiased;
     box-sizing: border-box;
     font-family: Geomanist,Arial,sans-serif;
     background-color: transparent;
     position: relative;
-
-
 }
+
 
 .product--name{
     --vh: 8px;
@@ -50,7 +48,6 @@
     border: 2px solid rgb(242, 244, 245);
     border-radius: 4px;
     color: rgb(0, 47, 52);
-
     font-size: 16px;
     line-height: 20px;
     outline: 0;
@@ -58,6 +55,7 @@
     resize: none;
     width: 40%;
 }
+
 
 .product--category--div{
     --vh: 8px;
@@ -71,9 +69,7 @@
     border-radius: 4px;
     padding: 16px;
     width: 12%;
-
 }
-
 
 
 .category--label{
@@ -81,15 +77,14 @@
     cursor: pointer;
 }
 
+
 .product--category{
     opacity: 0;
     width: 150px;
 }
 
 
-
 .div--product--image{
-
     --vh: 8px;
     -webkit-font-smoothing: antialiased;
     box-sizing: border-box;
@@ -101,8 +96,8 @@
     background-color: white;
 }
 
-.div--outer--image{
 
+.div--outer--image{
     -webkit-font-smoothing: antialiased;
     box-sizing: border-box;
     font-family: Geomanist,Arial,sans-serif;
@@ -110,8 +105,8 @@
     height: 200px;
 }
 
-.div--image{
 
+.div--image{
     -webkit-font-smoothing: antialiased;
     box-sizing: border-box;
     font-family: Geomanist,Arial,sans-serif;
@@ -131,13 +126,18 @@
     position: relative;
 }
 
+
 .product--main--tag{
     font-size: 20px;
 }
+
+
 .image--p--tag{
     position: absolute;
     font-size: 17px;
 }
+
+
 .product--image{
     opacity: 0;
 }
@@ -148,7 +148,6 @@
     -webkit-font-smoothing: antialiased;
     box-sizing: border-box;
     font-family: Geomanist,Arial,sans-serif;
-
     border-radius: 25px;
     width: 103.3%;
     padding: 32px;
@@ -156,39 +155,35 @@
     background-color: white;
 }
 
-.div--description{
 
+.div--description{
     --vh: 7.54px;
     -webkit-font-smoothing: antialiased;
     box-sizing: border-box;
     font-family: Geomanist,Arial,sans-serif;
 }
 
-.product--description{
 
+.product--description{
     --vh: 8px;
     -webkit-font-smoothing: antialiased;
     box-sizing: border-box;
     font-weight: inherit;
-
     background-clip: padding-box;
     background-color: rgb(242, 244, 245);
     border: 2px solid rgb(242, 244, 245);
     border-radius: 4px;
     color: rgb(0, 47, 52);
-
     font-size: 16px;
     line-height: 20px;
-
     padding: 16px 48px 16px 16px;
     resize: none;
     width: 50%;
     height: 100%;
-
 }
 
-.description--word--counter--div{
 
+.description--word--counter--div{
     --vh: 8px;
     -webkit-font-smoothing: antialiased;
     box-sizing: border-box;
@@ -203,6 +198,7 @@
     padding-top: 16px;
 }
 
+
 .div--product--price{
     --vh: 8px;
     -webkit-font-smoothing: antialiased;
@@ -215,8 +211,8 @@
     background-color: white;
 }
 
-.product--price{
 
+.product--price{
     --vh: 8px;
     -webkit-font-smoothing: antialiased;
     box-sizing: border-box;
@@ -237,7 +233,6 @@
 }
 
 
-
 .sale--page--input--button{
     --vh: 8px;
     -webkit-font-smoothing: antialiased;
@@ -250,8 +245,8 @@
     background-color: white;
 }
 
-.input--button{
 
+.input--button{
     --vh: 8px;
     -webkit-font-smoothing: antialiased;
     font-family: inherit;
@@ -279,6 +274,7 @@
     width: auto;
 }
 
+
 .pre--upload--image--div{
     text-size-adjust: 100%;
     --vh: 8px;
@@ -289,7 +285,6 @@
     background: rgb(242, 244, 245);
     width: 188px;
     height: 141px;
-
     font-size: 14px;
     font-weight: 500;
     text-align: center;

@@ -101,7 +101,7 @@ def profile_details(request, username):
 
 @login_required
 def user_ads(request, username):
-    user = User.objects.filter(username=username).get()
+    user = request.user
     user_active_ads = Products.objects.filter(creator=user.pk)
 
     context = {
@@ -113,6 +113,7 @@ def user_ads(request, username):
     return render(request, 'common_pages/my_ads.html', context)
 
 
+@login_required
 def favourite_user_ads(request, username):
     user = User.objects.filter(username=username).get()
     user_favourite_ads = ProductLikes.objects.filter(user=user.pk)

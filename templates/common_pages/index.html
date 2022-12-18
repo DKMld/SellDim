@@ -18,44 +18,48 @@
 
 
 <body>
-
+<div id="snow"></div>
 
 {% if not user_is_auth %}
 <div class="nav--bar--div">
     <nav class="nav--bar">
+        <div class="main--links--div">
+            <a class="nav--bar--links" href="{% url 'home page' %}">Home</a>
+            <a class="nav--bar--links" href="{% url 'sell' %}">Sell</a>
+            <a class="nav--bar--links" href="{% url 'login' %}">Login</a>
+            <a class="nav--bar--links" href="{% url 'register' %}">Register</a>
+            <a class="nav--bar--links" href="#">About Us</a>
+        </div>
 
-        <a class="nav--bar--links" href="{% url 'home page' %}">Home</a>
-        <a class="nav--bar--links" href="{% url 'sell' %}">Sell</a>
-        <a class="nav--bar--links" href="{% url 'login' %}">Login</a>
-        <a class="nav--bar--links" href="{% url 'register' %}">Register</a>
-        <a class="nav--bar--links" href="#">About Us</a>
-
+        <div class="logo--div" style="margin-right: 45%;">
+            <img src="{% static 'selldimlogo.png' %}" width="150px" height="125px" alt="">
+        </div>
 
     </nav>
-    <div class="logo--div">
-        <img src="{% static 'selldimlogo.png' %}" width="150px" height="125px" alt="">
-    </div>
+
+
 </div>
 
 
     {% else %}
 
     <div class="nav--bar--div">
-    <div class="logo--div">
-        <img src="{% static 'selldimlogo.png' %}" width="150px" height="125px" alt="">
-    </div>
+
 
     <nav class="nav--bar">
+        <div class="main--links--div">
+            <a class="nav--bar--links" href="{% url 'home page' %}">Home</a>
+            <a class="nav--bar--links" href="{% url 'sell' %}">Sell</a>
+            <a class="nav--bar--links" href="#">About Us</a>
+            <a class="nav--bar--links" href="{% url 'chat room' %}">Messages</a>
+        </div>
 
-        <a class="nav--bar--links" href="{% url 'home page' %}">Home</a>
-        <a class="nav--bar--links" href="{% url 'sell' %}">Sell</a>
-        <a class="nav--bar--links" href="#">About Us</a>
-        <a class="nav--bar--links" href="{% url 'chat room' %}">Messages</a>
+        <div class="logo--div">
+            <img src="{% static 'selldimlogo.png' %}" width="150px" height="125px" alt="">
+        </div>
 
         <div class="username--logout--div">
-
             <a href="{% url 'profile details' user.username %}" class="user--username">{{ user.username }}</a>
-
             <div style="margin-top: 20px;
                     padding-left: 10px;">
             <a href="{% url 'user favourite ads' user.username %}">
@@ -266,6 +270,75 @@
 
 {#    end of second row of ads#}
 {% endblock %}
+
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function(){
+    var script = document.createElement('script');
+    script.src = 'https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js';
+    script.onload = function(){
+        particlesJS("snow", {
+            "particles": {
+                "number": {
+                    "value": 200,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {
+                    "value": "#ffffff"
+                },
+                "opacity": {
+                    "value": 0.7,
+                    "random": false,
+                    "anim": {
+                        "enable": false
+                    }
+                },
+                "size": {
+                    "value": 5,
+                    "random": true,
+                    "anim": {
+                        "enable": false
+                    }
+                },
+                "line_linked": {
+                    "enable": false
+                },
+                "move": {
+                    "enable": true,
+                    "speed": 1,
+                    "direction": "bottom",
+                    "random": true,
+                    "straight": false,
+                    "out_mode": "out",
+                    "bounce": false,
+                    "attract": {
+                        "enable": true,
+                        "rotateX": 300,
+                        "rotateY": 1200
+                    }
+                }
+            },
+            "interactivity": {
+                "events": {
+                    "onhover": {
+                        "enable": false
+                    },
+                    "onclick": {
+                        "enable": false
+                    },
+                    "resize": false
+                }
+            },
+            "retina_detect": true
+        });
+    }
+    document.head.append(script);
+});
+</script>
 
 
 </body>

@@ -1,6 +1,7 @@
 import os
 
 from django import views
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
 from Selldim import settings
@@ -24,6 +25,7 @@ class HomePage(views.View):
         return render(request, 'common_pages/index.html', context)
 
 
+@login_required
 def product_like(request, pk):
     product = Products.objects.filter(pk=pk).get()
     user = request.user
