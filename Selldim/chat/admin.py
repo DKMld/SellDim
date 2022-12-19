@@ -2,6 +2,7 @@ from django.contrib import admin
 
 from Selldim.chat.models import ChatMessage,Messages
 
+
 class ChatMessageAdmin(admin.ModelAdmin):
     list_display = ("id", 'timestamp', 'room_name', 'sender', 'receiever')
     list_filter = ('id', 'timestamp', 'room_name', 'sender', 'receiever')
