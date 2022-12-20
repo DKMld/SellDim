@@ -1,6 +1,9 @@
 from pathlib import Path
 import os
 from decouple import config
+import django_heroku
+import dj_database_url
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -17,7 +20,7 @@ DEBUG = config('DEBUG', cast=bool)
 
 ALLOWED_HOSTS = []
 if not DEBUG:
-    ALLOWED_HOSTS = ['127.0.0.1']
+    ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -116,10 +119,21 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
 STATICFILES_DIRS = [
-    BASE_DIR / 'static'
+    BASE_DIR / STATIC_URL
 ]
+
+django_heroku.settings(locals())
+
+# if DEBUG:
+#    STATIC_ROOT = os.path.join(BASE_DIR, '/static')
+# else:
+#    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
 MEDIA_ROOT = Path.joinpath(BASE_DIR, '/media/')
 MEDIA_URL = '/media/'
@@ -148,6 +162,9 @@ CHANNEL_LAYERS = {
 
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'login'
+
+
+
 
 #TODO | Search bar!                                       // DONE! //
 #TODO | Messages between users                            // DONE! //

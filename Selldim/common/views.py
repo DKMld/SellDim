@@ -1,10 +1,7 @@
-import os
-
 from django import views
 from django.contrib.auth.decorators import login_required
+from django.core import exceptions
 from django.shortcuts import render, redirect
-
-from Selldim import settings
 from Selldim.common.forms import ProductSearchForm
 from Selldim.common.models import ProductLikes
 from Selldim.products.models import Products
@@ -76,3 +73,17 @@ def product_search_by_category(request, category):
     }
 
     return render(request, 'product_pages/product_search_page.html', context)
+
+
+def error_404(request, exception):
+    return render(request, '404.html')
+
+
+def error_403(request, exception):
+
+    return render(request, '403.html')
+
+
+def error_500(request):
+    return render(request, '500.html')
+
