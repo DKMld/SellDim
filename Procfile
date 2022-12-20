@@ -1,1 +1,1 @@
-web gunicorn Selldim.wsgi:apllication --log-file -
+web gunicorn Selldim.wsgi --log-file -
