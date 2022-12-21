@@ -170,6 +170,7 @@ LOGIN_REDIRECT_URL = 'login'
 
 
 
+CSFR_TRUSTED_ORIGINS = ['https://selldim.herokuapp.com']
 
 #TODO | Search bar!                                       // DONE! //
 #TODO | Messages between users                            // DONE! //
