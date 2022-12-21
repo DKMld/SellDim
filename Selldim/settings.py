@@ -77,7 +77,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'Selldim',
         'USER': 'postgres',
-        'PASSWORD': config('PASSWORD'),
+        # 'PASSWORD': config('PASSWORD'),
+        'PASSWORD': '08120101m',
         'HOST': 'localhost',
         'PORT': '5432',
     }
