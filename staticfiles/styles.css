@@ -1,0 +1,238 @@
+body{
+    margin: auto;
+	min-height: 100vh;
+	font-family: 'Jost', sans-serif;
+	background: whitesmoke;
+}
+
+
+.nav--bar--div{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+.nav--bar{
+    padding: 30px;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #002f34;
+    height: 65px;
+}
+
+.main--links--div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav--bar--links{
+    margin: 5px;
+    color: white;
+    background-color: #573b8a;
+    border-radius: 25px;
+    text-align: center;
+    padding: 6px 0;
+    vertical-align: central;
+    height: 25px;
+    width: 75px;
+    text-decoration: None;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.nav--bar--links:hover{
+    margin: 5px;
+    color: cadetblue;
+    background-color: #573b8a;
+    border-radius: 25px;
+    text-align: center;
+    padding: 6px 0;
+    vertical-align: central;
+    height: 25px;
+    width: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.user--username{
+    font-size: 20px;
+    color: white;
+    background-color: #573b8a;
+    margin-top: 7px;
+    border-radius: 25px;
+    width: auto;
+    padding: 13px;
+    margin-bottom: 5px;
+    text-decoration: none;
+}
+
+
+.user--username:hover{
+    font-size: 20px;
+    color: cadetblue;
+    background-color: #573b8a;
+    margin-top: 7px;
+    border-radius: 25px;
+    width: auto;
+    padding: 13px;
+    margin-bottom: 5px;
+}
+
+
+.username--logout--div{
+    display: flex;
+    justify-content: center;
+    align-items: normal;
+}
+
+
+/*profile button */
+ul {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+
+
+li {
+  color: #fff;
+  background: #573b8a;
+  display: block;
+  float: left;
+  padding: 13px;
+  position: relative;
+  text-decoration: none;
+  transition-duration: 0.5s;
+  border-radius: 25px;
+  margin: 10px;
+
+
+}
+
+
+li a {
+  color: #fff;
+  text-decoration: None;
+
+}
+
+
+li:hover,
+li:focus-within {
+  background: cadetblue;
+  cursor: pointer;
+
+}
+
+
+.li--item{
+z-index: 1;
+}
+
+
+li:focus-within a {
+  outline: none;
+}
+
+
+ul li ul {
+
+  visibility: hidden;
+  opacity: 0;
+  min-width: 5rem;
+  position: absolute;
+  transition: all 0.5s ease;
+  margin-top: 1rem;
+  left: 0;
+  display: none;
+}
+
+
+ul li:hover > ul,
+ul li:focus-within > ul,
+ul li ul:hover,
+ul li ul:focus {
+   visibility: visible;
+   opacity: 1;
+   display: block;
+}
+
+
+ul li ul li {
+  clear: both;
+  width: 55%;
+  margin: 2px;
+}
+
+.logo--div{
+    height: 125px;
+    margin-right: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    margin-left: 43%;
+}
+
+.icon--main--div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon--div{
+    margin-right: 18px;
+    background-color: white;
+    border-radius: 25px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.icon--div:hover{
+    background-color: cadetblue;
+}
+
+
+.icon--label--div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.icon--link{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+#snow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    z-index: 1000;
+}
