@@ -18,7 +18,17 @@ def register_user(request):
         form = AccountsForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('login')
+
+            username = request.POST.get('username')
+            password = request.POST.get('password1')
+            print(username)
+            print(password)
+            user = authenticate(request, username=username, password=password)
+
+            if user is not None:
+                login(request, user)
+                return redirect('home page')
+
         messages.error(request, 'Username is already taken!')
 
     context = {

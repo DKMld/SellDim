@@ -139,7 +139,7 @@ STATICFILES_DIRS = [
 ]
 
 
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+# STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
@@ -182,17 +182,17 @@ LOGIN_REDIRECT_URL = 'login'
 
 
 
-#TODO | Search bar!                                       // DONE! //
-#TODO | Messages between users                            // DONE! //
-#TODO | Like button (adding to favourites)                // DONE! //
-#TODO | User favourite page                               // DONE! //
-#TODO | User Profile Picture                              // DONE! //
-#TODO | Images to show while creating a new add           // DONE! //
+#TODO | Search bar!                                        // DONE! //
+#TODO | Messages between users                             // DONE! //
+#TODO | Like button (adding to favourites)                 // DONE! //
+#TODO | User favourite page                                // DONE! //
+#TODO | User Profile Picture                               // DONE! //
+#TODO | Images to show while creating a new add            // DONE! //
 
 
 #TODO | Hide secret key                                     // DONE //
-#TODO | Add 404 page
+#TODO | Add 404,404,500 page                                // DONE //
 #TODO | Add JS pop up messages
-#TODO | Add django admin groups
-#TODO | Fix current user no picture msg bug                // DONE //
-#TODO | Fix error product deleted crashes chat room        // DONE //
+#TODO | Add django admin groups                             // DONE //
+#TODO | Fix current user no picture msg bug                 // DONE //
+#TODO | Fix error product deleted crashes chat room         // DONE //
