@@ -4,7 +4,7 @@ from django.db import models
 
 class ProfilePicture(models.Model):
     user = models.ForeignKey(User, on_delete=models.RESTRICT, null=True)
-    user_picture = models.ImageField(null=True)
+    user_picture = models.ImageField(null=True, upload_to='profile_pictures')
 
     def __str__(self):
         return f"{self.user}: {self.user_picture}"

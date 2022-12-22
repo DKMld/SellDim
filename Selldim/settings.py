@@ -9,18 +9,14 @@ import dj_database_url
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# SECRET_KEY = config('SECRET_KEY')
-SECRET_KEY = 'django-insecure-efg&fb1s!vx6vbhvyx9b1df739p36fp9m(+efpyz#snlh)p!(6'
+SECRET_KEY = config('SECRET_KEY')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = config('DEBUG', cast=bool)
-DEBUG = False
+
+DEBUG = config('DEBUG', cast=bool)
+
 
 ALLOWED_HOSTS = ['*']
-# if not DEBUG:
-#     ALLOWED_HOSTS = ['*']
 
-# Application definition
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -38,6 +34,7 @@ INSTALLED_APPS = [
     'Selldim.chat',
 ]
 
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -46,9 +43,15 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    "whitenoise.middleware.WhiteNoiseMiddleware",
+
+    # 'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
+
 ROOT_URLCONF = 'Selldim.urls'
+
 
 TEMPLATES = [
     {
@@ -68,6 +71,7 @@ TEMPLATES = [
     },
 ]
 
+
 WSGI_APPLICATION = 'Selldim.wsgi.application'
 
 
@@ -77,15 +81,16 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'Selldim',
         'USER': 'postgres',
-        # 'PASSWORD': config('PASSWORD'),
-        'PASSWORD': '08120101m',
+        'PASSWORD': config('PASSWORD'),
         'HOST': 'localhost',
         'PORT': '5432',
     }
 }
 
+
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -127,27 +132,30 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = '/static/'
 
-STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'),)
+STATICFILES_DIRS = [
+    BASE_DIR / 'static'
+]
 
-django_heroku.settings(locals())
 
-# if DEBUG:
-#    STATIC_ROOT = os.path.join(BASE_DIR, '/static')
-# else:
-#    STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
 
-MEDIA_ROOT = Path.joinpath(BASE_DIR, '/media/')
+
+# django_heroku.settings(locals())
+
+
 MEDIA_URL = '/media/'
-
+MEDIA_ROOT = 'media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 
 CACHES = {
     'default': {
@@ -165,12 +173,14 @@ CHANNEL_LAYERS = {
     }
 }
 
+
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'login'
 
 
 
-CSFR_TRUSTED_ORIGINS = ['https://selldim.herokuapp.com']
+
+
 
 #TODO | Search bar!                                       // DONE! //
 #TODO | Messages between users                            // DONE! //

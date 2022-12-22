@@ -22,7 +22,7 @@ class Products(models.Model):
     product_name = models.CharField(max_length=100, null=True)
     description = models.TextField(null=True, max_length=1000)
     price = models.FloatField(null=True, max_length=10)
-    image = models.ImageField(null=True)
+    image = models.ImageField(null=True, upload_to='product_images')
     category = models.CharField(null=True, max_length=50, choices=CATEGORY_CHOICES)
 
     slug = models.SlugField(null=True, unique=True)
