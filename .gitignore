@@ -1,1 +1,3 @@
-#/Selldim/.env
+/Selldim/.env
+Procfile
+runtime.txt

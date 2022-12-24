@@ -5,6 +5,7 @@ import django_heroku
 import dj_database_url
 
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -43,10 +44,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
-    "whitenoise.middleware.WhiteNoiseMiddleware",
-
-    # 'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 
@@ -78,20 +75,20 @@ WSGI_APPLICATION = 'Selldim.wsgi.application'
 DATABASES = {
 
     'default': {
-        # 'ENGINE': 'django.db.backends.postgresql',
         'ENGINE': 'django.db.backends.postgresql',
+        # 'ENGINE': 'django.db.backends.postgresql',
 
-        # 'NAME': 'Selldim',
-        'NAME': 'd9ud0d8hr43v9v',
+        'NAME': 'Selldim',
+        # 'NAME': 'd9ud0d8hr43v9v',
 
-        # 'USER': 'postgres',
-        'USER': 'yoostapgsollap',
+        'USER': 'postgres',
+        # 'USER': 'yoostapgsollap',
+
         'PASSWORD': config('PASSWORD'),
 
-        # 'HOST': 'localhost',
-        'HOST': 'ec2-3-229-161-70.compute-1.amazonaws.com',
+        'HOST': 'localhost',
+        # 'HOST': 'ec2-3-229-161-70.compute-1.amazonaws.com',
 
-        # 'PORT': '5432',
         'PORT': '5432',
     }
 }
@@ -147,13 +144,8 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static'
 ]
 
-
-# STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-
-# STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
-
-
-django_heroku.settings(locals())
+# Heroku
+# django_heroku.settings(locals())
 
 
 MEDIA_URL = '/media/'
@@ -176,22 +168,21 @@ CACHES = {
 ASGI_APPLICATION = 'Selldim.asgi.application'
 
 
-# CHANNEL_LAYERS = {
-#     "default": {
-#         "BACKEND": "channels.layers.InMemoryChannelLayer"
-#     }
-# }
-
-
 CHANNEL_LAYERS = {
     "default": {
-        "BACKEND": "channels_redis.core.RedisChannelLayer",
-        "CONFIG": {
-            "hosts": [("redis-server-name", 6379)],
-        },
-    },
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    }
 }
 
+
+# CHANNEL_LAYERS = {
+#     "default": {
+#         "BACKEND": "channels_redis.core.RedisChannelLayer",
+#         "CONFIG": {
+#             "hosts": ["redis://h:954c886918c238905dc2c322c34546bd9dbc2738d32523b12bc36ed2d058c387ec@ec2-34-211-446-320.compute-1.amazonaws.com:7719"],
+#         },
+#     },
+# }
 
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'login'
