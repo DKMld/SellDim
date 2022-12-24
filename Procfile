@@ -1,3 +1,3 @@
 
 
-web: gunicorn myproject.wsgi
+web: gunicorn Selldim.wsgi
