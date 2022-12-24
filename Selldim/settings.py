@@ -78,11 +78,20 @@ WSGI_APPLICATION = 'Selldim.wsgi.application'
 DATABASES = {
 
     'default': {
+        # 'ENGINE': 'django.db.backends.postgresql',
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Selldim',
-        'USER': 'postgres',
+
+        # 'NAME': 'Selldim',
+        'NAME': 'd9ud0d8hr43v9v',
+
+        # 'USER': 'postgres',
+        'USER': 'yoostapgsollap',
         'PASSWORD': config('PASSWORD'),
-        'HOST': 'localhost',
+
+        # 'HOST': 'localhost',
+        'HOST': 'ec2-3-229-161-70.compute-1.amazonaws.com',
+        
+        # 'PORT': '5432',
         'PORT': '5432',
     }
 }
