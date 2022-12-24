@@ -1,1 +1,4 @@
 /Selldim/.env
+Procfile
+runtime.txt
+requirements.txt
