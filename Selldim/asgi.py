@@ -8,7 +8,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Selldim.settings')
 
 application = ProtocolTypeRouter(
     {
-        "http": get_asgi_application(),
+        "https": get_asgi_application(),
         "websocket": AuthMiddlewareStack(
             URLRouter(
                 chat_routing.websocket_url_patterns
