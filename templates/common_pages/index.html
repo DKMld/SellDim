@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="{% static 'styles.css' %}">
     <link rel="stylesheet" href="{% static 'add_style.css' %}">
     <link rel="stylesheet" href="{% static 'search_bar.css' %}">
-
     {% endblock %}
 </head>
 
@@ -40,18 +39,22 @@
 
 </div>
 
-
     {% else %}
 
     <div class="nav--bar--div">
-
 
     <nav class="nav--bar">
         <div class="main--links--div">
             <a class="nav--bar--links" href="{% url 'home page' %}">Home</a>
             <a class="nav--bar--links" href="{% url 'sell' %}">Sell</a>
             <a class="nav--bar--links" href="#">About Us</a>
-            <a class="nav--bar--links" href="{% url 'chat room' %}">Messages</a>
+
+
+{#            <div style="display: flex; justify-content: right">#}
+{#                <a class="notification--counter" href="">3</a>#}
+                <a class="nav--bar--links" href="{% url 'chat room' %}">Messages</a>
+{#            </div>#}
+
         </div>
 
         <div class="logo--div">

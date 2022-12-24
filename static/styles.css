@@ -220,6 +220,21 @@ ul li ul li {
 
 
 
+.notification--counter{
+    background: yellow;
+    position: absolute;
+    width: 20px;
+    border-radius: 25px;
+    height: 20px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
 
 
 
