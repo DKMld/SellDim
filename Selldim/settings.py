@@ -90,7 +90,7 @@ DATABASES = {
 
         # 'HOST': 'localhost',
         'HOST': 'ec2-3-229-161-70.compute-1.amazonaws.com',
-        
+
         # 'PORT': '5432',
         'PORT': '5432',
     }
