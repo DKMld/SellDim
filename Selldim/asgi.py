@@ -4,6 +4,9 @@ from channels.auth import AuthMiddlewareStack
 from channels.routing import ProtocolTypeRouter, URLRouter
 from Selldim.chat import routing as chat_routing
 
+# heroku
+from Selldim.routing import *
+
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'Selldim.settings')
 
 application = ProtocolTypeRouter(
